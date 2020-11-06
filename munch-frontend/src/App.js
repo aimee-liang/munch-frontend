@@ -1,8 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import React from "react"
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom'
+import Header from "./Components/Header"
 import Welcome from "./Components/Welcome"
+import Footer from "./Components/Footer"
 
 // function App() {
 //   return (
@@ -25,13 +26,16 @@ import Welcome from "./Components/Welcome"
 //   );
 // }
 
-class App extends React.Component{
-  render(){
-    return (
-        <Welcome />
-      )
-  }
 
-}
+const App = () => {
 
-export default App;
+
+  return (
+    <div className="main">
+    <Header/>
+    <Welcome />
+    <Footer />
+  </div>
+  )}
+  
+export default App
