@@ -1,34 +1,55 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import React from "react"
-import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom'
+import { Route, NavLink, Switch } from 'react-router-dom'
 import Welcome from "./Components/Welcome"
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+import Signup from "./Components/Signup"
+import Login from "./Components/Login"
+import Restaurant from './Containers/Restaurant';
 
 class App extends React.Component{
+  state={
+    user: null
+  }
+
+  signUpHandler = (userObj) => {
+    fetch(`http://localhost:3000/api/v1/users`, {
+      method: "POST",
+      headers:{
+        "content-type": "application/json",
+        accepts: "application/json"
+      },
+      body: JSON.stringify({user: userObj})
+    })
+    .then(resp => resp.json())
+    .then(data => this.setState({user: data.user}))
+  }
+
+
+/* loginHandler = (userInfo) => {
+  fetch(`http://localhost:3000/api/v1/login`,{
+    headers:{
+        "content-type": "application/json",
+        accepts: "application/json"
+      },
+      body: JSON.stringify({user: userObj})
+    })
+    .then(resp => resp.json())
+    .then(data => this.setState({user: data.user}))
+  })
+}
+*/
+
   render(){
     return (
-        <Welcome />
+      <>
+        <Switch>
+          <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
+          <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
+          <Route path="/welcome" component={Welcome} />
+          <Route path="/restaurants" component={Restaurant} />
+        </Switch>
+      </>
       )
   }
 
