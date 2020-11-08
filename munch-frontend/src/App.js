@@ -1,11 +1,12 @@
 // import logo from './logo.svg';
 import './App.css';
 import React from "react"
-import { Route, NavLink, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, NavLink, Switch } from 'react-router-dom'
 import Welcome from "./Components/Welcome"
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Restaurant from './Containers/Restaurant';
+
 
 class App extends React.Component{
   state={
@@ -43,12 +44,15 @@ class App extends React.Component{
   render(){
     return (
       <>
-        <Switch>
-          <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
-          <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
-          <Route path="/welcome" component={Welcome} />
-          <Route path="/restaurants" component={Restaurant} />
-        </Switch>
+        <BrowserRouter>
+          <Switch>
+            
+            <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
+            <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
+            <Route path="/welcome" component={Welcome} />
+            <Route path="/restaurants" component={Restaurant} />
+          </Switch>
+        </BrowserRouter>
       </>
       )
   }
