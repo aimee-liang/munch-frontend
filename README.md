@@ -9,6 +9,7 @@ Introducing Munch, a breakthrough app. Munch was created using the Zomato API. E
 
 Our stretch goals include a Google Maps API, having users be able to interact with other users by making reservations on each other's profile pages, and providing more detailed information for each restaurant. 
 
+Thank you for checking us out!
 
 
 # Created as a Flatiron School student with Jason Chilcott.
