@@ -9,7 +9,7 @@ class Restaurant extends React.Component{
 
     // fetch all restaurants
     componentDidMount(){
-        fetch(`http://localhost:3000/`)
+        fetch(`http://localhost:3000/api/v1/restaurants`)
         .then(resp => resp.json)
         .then(restaurantData => {
             this.setState(() => ({
