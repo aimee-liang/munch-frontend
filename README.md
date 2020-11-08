@@ -1,7 +1,7 @@
 # munch-frontend
 Restaurant app to rate, view, and favorite restaurants. 
 
-![alt text](https://tenor.com/bbLXb.gif)
+![alt text](https://media.giphy.com/media/fo6vEEeAutQWI/giphy.gif)
 
 Have you ever gone back and forth on where to eat with your friends or significant other? Same here. 
 
