@@ -30,7 +30,7 @@ class Welcome extends React.Component{
         )}
 
     render() {
-        //console.log(this.state.restaurants)
+        console.log(this.state.restaurants)
 
         return(
             <>
@@ -42,6 +42,11 @@ class Welcome extends React.Component{
                         <h2>{restaurant.restaurant.name}</h2>
                         <h4>{restaurant.restaurant.cuisines}</h4>
                         <p>{restaurant.restaurant.location.address}</p>
+                        <label for="reservation_date">Reservation Date:</label>
+                        <input type="date" id="reservation-date" name="reservation-date" defaultValue="2020-11-13"></input>
+                        <label for="reservation_time">Reservation Time:</label>
+                        <input type="time" id="reservation-time" name="reservation-time" defaultValue="19:00" min="12:00" max="22:00" step="900"></input>
+                        <br/>
                         <br/>
 
                     </div>
