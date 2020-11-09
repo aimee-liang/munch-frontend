@@ -24,11 +24,12 @@ class Signup extends React.Component{
             password: "",
             confirm_password: ""
         }))
-        console.log(this.state)
     }
     
-    /* validate = () => {
-        */
+    validate = () => {
+
+    }
+
 
     render(){
         return(
@@ -40,7 +41,6 @@ class Signup extends React.Component{
                 <input type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.changeHandler} />
                 <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
                 <input type="password" name="confirm_password" placeholder="Confirm Password" value={this.state.confirm_password} onChange={this.changeHandler} />
-
                 <input type="submit" value="sign up" />
             </form>
             </>

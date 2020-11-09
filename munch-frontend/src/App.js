@@ -1,15 +1,15 @@
 // import logo from './logo.svg';
 import './App.css';
 import React from "react"
-import { BrowserRouter, Route, NavLink, Switch } from 'react-router-dom'
+import {Route, Switch, withRouter } from 'react-router-dom'
 import Welcome from "./Components/Welcome"
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Restaurant from './Containers/Restaurant';
 import Policy from "./Components/Policy"
-import Header from "./Components/Header"
-import Footer from "./Components/Footer"
-
+// import Header from "./Components/Header"
+// import Footer from "./Components/Footer"
+import Profile from "./Containers/Profile"
 
 class App extends React.Component{
   state={
@@ -26,41 +26,43 @@ class App extends React.Component{
       body: JSON.stringify({user: userObj})
     })
     .then(resp => resp.json())
-    .then(data => this.setState({user: data.user}))
+    .then(data => this.setState({user: data.user}),
+    this.props.history.push(`/welcome`)
+    )
   }
 
 
   loginHandler = (userInfo) => {
     fetch(`http://localhost:3000/api/v1/login`,{
+      method: "POST",
       headers:{
           "content-type": "application/json",
-          accepts: "application/json"
+          accepts: "application/json",
+          // Authorization: `Bearer <token>`
         },
         body: JSON.stringify({user: userInfo})
       })
       .then(resp => resp.json())
-      .then(data => this.setState({user: data.user}))
+      .then(data => this.setState({user: data.user}),
+      this.props.history.push(`/welcome`))
     }
-
 
   render(){
     return (
       <>
 
-      <BrowserRouter>
       <Switch>
         <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
         <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
         <Route path="/welcome" component={Welcome} />
         <Route path="/restaurants" component={Restaurant} />
         <Route path="/policy" component={Policy} />
+        <Route path="/profile" render={()=> <Profile/>} />
       </Switch>
-      </BrowserRouter>
-
       </>
     )
   }
 
 }
 
-export default App;
+export default withRouter(App);
