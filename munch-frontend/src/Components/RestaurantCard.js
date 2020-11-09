@@ -13,7 +13,7 @@ class RestaurantCard extends React.Component{
     this.setState({ [e.target.name]: e.target.value})
   }
 
-  searchHandler = (e) => {
+  submitHandler = (e) => {
     e.preventDefault()
 
     
@@ -36,9 +36,9 @@ class RestaurantCard extends React.Component{
                     <p>{restaurant.location.address}</p>
 
                     <form className="reservation" onSubmit={this.submitHandler}>
-                    <label for="reservation_date">Reservation Date:</label>
+                    <label htmlFor="reservation_date">Reservation Date:</label>
                     <input type="date" id="reservation-date" name="date" value={this.state.date} onChange={this.changeHandler} />
-                    <label for="reservation_time">Reservation Time:</label>
+                    <label htmlFor="reservation_time">Reservation Time:</label>
                     <input type="time" id="reservation-time" name="time"  min="12:00" max="22:00" step="900" value={this.state.time} onChange={this.changeHandler}/>
                     <label>
                     Guests:
