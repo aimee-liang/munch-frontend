@@ -59,6 +59,7 @@ class App extends React.Component{
         <Route path="/policy" component={Policy} />
         <Route path="/profile" render={()=> <Profile/>} />
       </Switch>
+      {/* <Footer/> */}
       </>
     )
   }

@@ -1,6 +1,7 @@
 import React from "react"
 import Header from "../Components/Header"
 import Reservations from "./Reservations"
+import Reviews from "./Reviews"
 
 export default class Profile extends React.Component{
 
@@ -13,6 +14,7 @@ export default class Profile extends React.Component{
             <>
             <Header/>
             <Reservations />
+            <Reviews />
             </>
         )
     }
