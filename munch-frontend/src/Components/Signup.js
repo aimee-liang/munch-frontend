@@ -3,8 +3,9 @@ import BeforeAuthHeader from "./BeforeAuthHeader"
 
 class Signup extends React.Component{
     state={
-        avatar: "", // ideally want this to be an option for users to upload an image so it can be more interactive
+        /* avatar: "", // ideally want this to be an option for users to upload an image so it can be more interactive */
         username: "",
+        email: "",
         password: "",
         confirm_password: "",
     }
@@ -19,11 +20,16 @@ class Signup extends React.Component{
 
         this.setState(()=>({
             username: "",
+            email: "",
             password: "",
             confirm_password: ""
         }))
+        console.log(this.state)
     }
     
+    /* validate = () => {
+        */
+
     render(){
         return(
             <>
@@ -31,8 +37,9 @@ class Signup extends React.Component{
             <h4>Create a new account below</h4>
             <form onSubmit={this.localSignupHandler}>
                 <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler} />
+                <input type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.changeHandler} />
                 <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
-                <input type="password" name="confirm_password" placeholder="Confirm Password" value={this.state.password} onChange={this.changeHandler} />
+                <input type="password" name="confirm_password" placeholder="Confirm Password" value={this.state.confirm_password} onChange={this.changeHandler} />
                 <input type="submit" value="sign up" />
             </form>
             </>

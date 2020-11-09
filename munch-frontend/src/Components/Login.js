@@ -33,7 +33,7 @@ class Login extends React.Component{
                 <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
                 <input type="submit" value="Log In" />
             </form>
-            <p>Forgot Username or Password</p>
+            {/* <p>Forgot Username or Password</p> */}
             </>
         )
     }

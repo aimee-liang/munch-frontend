@@ -2,7 +2,11 @@ import React from "react"
 
 class Search extends React.Component{
     state={
-        searchTerm: ""
+        search: "",
+    }
+
+    changeHandler = (e) => {
+        this.setState({[e.target.name]: e.target.value})
     }
 
 

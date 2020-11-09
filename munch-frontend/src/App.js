@@ -29,27 +29,26 @@ class App extends React.Component{
   }
 
 
-/* loginHandler = (userInfo) => {
-  fetch(`http://localhost:3000/api/v1/login`,{
-    headers:{
-        "content-type": "application/json",
-        accepts: "application/json"
-      },
-      body: JSON.stringify({user: userObj})
-    })
-    .then(resp => resp.json())
-    .then(data => this.setState({user: data.user}))
-  })
-}
-*/
+  loginHandler = (userInfo) => {
+    fetch(`http://localhost:3000/api/v1/login`,{
+      headers:{
+          "content-type": "application/json",
+          accepts: "application/json"
+        },
+        body: JSON.stringify({user: userInfo})
+      })
+      .then(resp => resp.json())
+      .then(data => this.setState({user: data.user}))
+    }
+
 
   render(){
     return (
       <>
       <BrowserRouter>
       <Switch>
-        <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
         <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
+        <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
         <Route path="/welcome" component={Welcome} />
         <Route path="/restaurants" component={Restaurant} />
         <Route path="/policy" component={Policy} />
