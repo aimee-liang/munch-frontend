@@ -1,4 +1,5 @@
 import React from "react"
+import RestaurantCard from "./RestaurantCard"
 import Header from "./Header"
 import Search from "./Search"
 
@@ -27,30 +28,25 @@ class Welcome extends React.Component{
     renderResults = results => {
         this.setState(() => ({
             restaurants: results.restaurants})
-        )}
+        )
+    }
+
+    renderRestaurants = () => this.state.restaurants.map((restaurant) => {
+
+        return <RestaurantCard key={restaurant.restaurant.id} restaurant={restaurant} />
+    })
+    
+
+
 
     render() {
-        console.log(this.state.restaurants)
+        //console.log(this.state.restaurants)
 
         return(
             <>
             <Header />
             <Search renderResults = {this.renderResults}/>
-                {this.state.restaurants.map((restaurant) => (
-                    <div key={restaurant.restaurant.id}>
-                        <img src={restaurant.restaurant.photo_url} alt={restaurant.restaurant.name}/>
-                        <h2>{restaurant.restaurant.name}</h2>
-                        <h4>{restaurant.restaurant.cuisines}</h4>
-                        <p>{restaurant.restaurant.location.address}</p>
-                        <label for="reservation_date">Reservation Date:</label>
-                        <input type="date" id="reservation-date" name="reservation-date" defaultValue="2020-11-13"></input>
-                        <label for="reservation_time">Reservation Time:</label>
-                        <input type="time" id="reservation-time" name="reservation-time" defaultValue="19:00" min="12:00" max="22:00" step="900"></input>
-                        <br/>
-                        <br/>
-
-                    </div>
-                ))}
+            {this.renderRestaurants()}
             </>
 
 
