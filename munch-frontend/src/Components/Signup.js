@@ -32,7 +32,9 @@ class Signup extends React.Component{
             <form onSubmit={this.localSignupHandler}>
                 <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler} />
                 <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
+
                 <input type="password" name="confirm_password" placeholder="Confirm Password" value={this.state.password} onChange={this.changeHandler} />
+
                 <input type="submit" value="sign up" />
             </form>
             </>
