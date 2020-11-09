@@ -6,11 +6,14 @@ import Welcome from "./Components/Welcome"
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Restaurant from './Containers/Restaurant';
+import Policy from "./Components/Policy"
+import Header from "./Components/Header"
+import Footer from "./Components/Footer"
 
 
 class App extends React.Component{
   state={
-    user: null
+    user: null,
   }
 
   signUpHandler = (userObj) => {
@@ -44,17 +47,19 @@ class App extends React.Component{
   render(){
     return (
       <>
-        <BrowserRouter>
-          <Switch>
-            
-            <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
-            <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
-            <Route path="/welcome" component={Welcome} />
-            <Route path="/restaurants" component={Restaurant} />
-          </Switch>
-        </BrowserRouter>
+
+      <BrowserRouter>
+      <Switch>
+        <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
+        <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
+        <Route path="/welcome" component={Welcome} />
+        <Route path="/restaurants" component={Restaurant} />
+        <Route path="/policy" component={Policy} />
+      </Switch>
+      </BrowserRouter>
+
       </>
-      )
+    )
   }
 
 }
