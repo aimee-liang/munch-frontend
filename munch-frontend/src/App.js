@@ -10,6 +10,7 @@ import Policy from "./Components/Policy"
 import Header from "./Components/Header"
 import Footer from "./Components/Footer"
 
+
 class App extends React.Component{
   state={
     user: null,
@@ -45,6 +46,7 @@ class App extends React.Component{
   render(){
     return (
       <>
+
       <BrowserRouter>
       <Switch>
         <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
@@ -54,6 +56,7 @@ class App extends React.Component{
         <Route path="/policy" component={Policy} />
       </Switch>
       </BrowserRouter>
+
       </>
     )
   }

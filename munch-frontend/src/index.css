@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* header */
+
+header {
+  background-color: #ff0000;
+}
+
+/* footer */
+
+footer {
+  background-color: #dd0000;
+}
