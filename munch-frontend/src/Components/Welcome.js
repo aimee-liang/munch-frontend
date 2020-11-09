@@ -1,5 +1,6 @@
 import React from "react"
 import Header from "./Header"
+import Search from "./Search"
 
 class Welcome extends React.Component{
 
@@ -9,7 +10,7 @@ class Welcome extends React.Component{
 
     // fetch all restaurants
     componentDidMount(){
-        fetch("https://developers.zomato.com/api/v2.1/search?count=100&lat=40.705138&lon=-74.014096&radius=1000&sort=real_distance&order=asc", {
+        fetch("https://developers.zomato.com/api/v2.1/search?q=&count=20&lat=40.705138&lon=-74.014096&radius=1000&sort=real_distance&order=asc", {
             headers: {
             Accept: "application/json",
             "User-Key": "7dc855cf4405df1034f62de35de0744e"
@@ -23,11 +24,18 @@ class Welcome extends React.Component{
         })
     }
 
-    render(){
-        console.log(this.state.restaurants)
+    renderResults = results => {
+        this.setState(() => ({
+            restaurants: results.restaurants})
+        )}
+
+    render() {
+        //console.log(this.state.restaurants)
 
         return(
-            <> <Header />
+            <>
+            <Header />
+            <Search renderResults = {this.renderResults}/>
                 {this.state.restaurants.map((restaurant) => (
                     <div key={restaurant.restaurant.id}>
                         <img src={restaurant.restaurant.photo_url} alt={restaurant.restaurant.name}/>
