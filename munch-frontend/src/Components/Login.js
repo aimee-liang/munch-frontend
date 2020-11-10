@@ -1,6 +1,4 @@
 import React from "react"
-import BeforeAuthHeader from "./BeforeAuthHeader"
-
 class Login extends React.Component{
     state={
         username: "",
@@ -19,22 +17,17 @@ class Login extends React.Component{
             username: "",
             password: ""
         }))
-    }
-
-    //need some functionality for what happens if user clicks on forgot username or password
-    
+    }    
     
     render(){
         return(
             <>
-            <BeforeAuthHeader />
             <p>Welcome Back, Munchie!</p>
             <form onSubmit={this.localLoginHandler}>
                 <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler} />
                 <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
                 <input type="submit" value="Log In" />
             </form>
-            {/* <p>Forgot Username or Password</p> */}
             </>
         )
     }

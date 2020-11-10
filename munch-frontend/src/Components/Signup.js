@@ -1,5 +1,4 @@
 import React from "react"
-import BeforeAuthHeader from "./BeforeAuthHeader"
 
 class Signup extends React.Component{
     state={
@@ -34,7 +33,6 @@ class Signup extends React.Component{
     render(){
         return(
             <>
-            <BeforeAuthHeader />
             <h4>Create a new account below</h4>
             <form onSubmit={this.localSignupHandler}>
                 <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler} />

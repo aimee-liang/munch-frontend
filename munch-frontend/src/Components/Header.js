@@ -1,11 +1,11 @@
 import Navbar from "./Navbar"
 import React from "react"
 
-const Header = () => {
+const Header = (props) => {
     return (
     <header className="header">
         <img className="logo" src="images/munch-logo.png" alt="munch logo"/>
-        <Navbar />
+        <Navbar user={props.user}/>
     </header>
     )
 }
