@@ -7,7 +7,7 @@ class RestaurantCard extends React.Component{
     date: "2020-11-13",
     time: "19:00",
     guests: "2",
-    
+    confirmed: false,
   }
 
   changeHandler = (e) => {
@@ -78,9 +78,16 @@ class RestaurantCard extends React.Component{
       .then(r => r.json())
       .then((r) => {
         console.log(r);
+        this.setState({confirmed: true})
       })
 
       .catch(error => console.error(error))
+  }
+
+  reservationConfirm = () => {
+    //let parsedDate = this.state.date
+    const restaurant = this.props.restaurant.restaurant
+  return <p className='confirmation'> Your reservation for {this.state.guests} at {restaurant.name} on {this.state.date} at {this.state.time} is confirmed! </p>
   }
 
 
@@ -112,6 +119,7 @@ class RestaurantCard extends React.Component{
                     </select>
                     </label>
                     <input type="submit" value="Make Reservation" />
+                    { this.state.confirmed ? this.reservationConfirm() : null }
                     </form>
                     <br/>
                     <br/>
