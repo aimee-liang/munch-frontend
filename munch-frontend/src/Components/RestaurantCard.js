@@ -6,7 +6,8 @@ class RestaurantCard extends React.Component{
   state = {
     date: "2020-11-13",
     time: "19:00",
-    guests: "2"
+    guests: "2",
+    user_id: "1"
   }
 
   changeHandler = (e) => {
@@ -14,19 +15,74 @@ class RestaurantCard extends React.Component{
   }
 
   submitHandler = (e) => {
-    e.preventDefault()
+    console.log(this.state.datetime)
 
-    
+
+    e.preventDefault()
+    const restaurant = this.props.restaurant.restaurant
+    let restaurantData = {
+      name: restaurant.name,
+      address: restaurant.location.address,
+      zomato_id: restaurant.id
+
     }
-  
+    fetch('http://localhost:3000/api/v1/restaurants', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(
+        restaurantData
+        )
+      })
+      .then(r => r.json())
+      .then((reservedRest) => { this.makeReservation(reservedRest);
+      })
+
+      .catch(error => console.error(error))
+
+
+
+
+    }
+
+    makeReservation = (reservedRest) => {
+      let datetime = this.state.date + ' ' + this.state.time
+
+      let reservationData = {
+        restaurant_id: reservedRest.id,
+        user_id: this.state.user_id,
+        guests: this.state.guests,
+        datetime: datetime
+
+      }
+
+      console.log(reservationData)
+
+      fetch('http://localhost:3000/api/v1/reservations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(
+          reservationData
+        )
+      })
+      .then(r => r.json())
+      .then((r) => {
+        console.log(r);
+      })
+
+      .catch(error => console.error(error))
+  }
+
 
 
 
   render() {
-
     const restaurant = this.props.restaurant.restaurant
-
-
     return(
         <>
                 <div key={restaurant.id}>
@@ -34,7 +90,6 @@ class RestaurantCard extends React.Component{
                     <h2>{restaurant.name}</h2>
                     <h4>{restaurant.cuisines}</h4>
                     <p>{restaurant.location.address}</p>
-
                     <form className="reservation" onSubmit={this.submitHandler}>
                     <label htmlFor="reservation_date">Reservation Date:</label>
                     <input type="date" id="reservation-date" name="date" value={this.state.date} onChange={this.changeHandler} />
@@ -55,19 +110,8 @@ class RestaurantCard extends React.Component{
                     </form>
                     <br/>
                     <br/>
-
                 </div>
               </>
             )}
-
-
-
-
 }
-
-
-
-
-
-
 export default RestaurantCard
