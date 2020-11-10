@@ -7,7 +7,7 @@ class RestaurantCard extends React.Component{
     date: "2020-11-13",
     time: "19:00",
     guests: "2",
-    user_id: "1"
+    
   }
 
   changeHandler = (e) => {
@@ -54,7 +54,7 @@ class RestaurantCard extends React.Component{
 
       let reservationData = {
         restaurant_id: reservedRest.id,
-        user_id: this.state.user_id,
+        user_id: this.props.user.id,
         guests: this.state.guests,
         datetime: datetime
 
