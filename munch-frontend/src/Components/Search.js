@@ -27,7 +27,6 @@ class Search extends React.Component{
             .catch(error => console.error(error))
             
         
-    
         this.setState({
             search: ""
         })

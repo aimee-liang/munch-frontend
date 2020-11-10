@@ -1,9 +1,10 @@
 import React from "react"
 
-const RatingCard = () => {
+const RatingCard = (props) => {
     return(
         <>
         <p>hello from the rating card</p>
+        {/* */}
         </>
     )
 }

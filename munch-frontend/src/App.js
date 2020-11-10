@@ -6,7 +6,6 @@ import Welcome from "./Components/Welcome"
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Restaurant from './Containers/Restaurant';
-import Policy from "./Components/Policy"
 import Header from "./Components/Header"
 // import Footer from "./Components/Footer"
 import Profile from "./Containers/Profile"
@@ -25,7 +24,6 @@ class App extends React.Component{
       })
         .then(resp => resp.json())
         .then(data => this.setState({user: data.user}))
-        // .then(data => console.log("Data:", data))
     } else {
       this.props.history.push("/login")
     }
@@ -41,8 +39,10 @@ class App extends React.Component{
       body: JSON.stringify({user: userObj})
     })
       .then(resp => resp.json())
-      .then(data => this.setState({user: data.user}),
-    this.props.history.push(`/welcome`)
+      .then(data => {
+        localStorage.setItem("token", data.jwt)
+        this.setState({user: data.user}, () => this.props.history.push(`/welcome`) )
+      },
     )
   }
 
@@ -57,31 +57,32 @@ class App extends React.Component{
         body: JSON.stringify({user: userInfo})
       })
       .then(resp => resp.json())
-      .then(data => this.setState({user: data.user}),
-      this.props.history.push(`/welcome`)
+      .then(data => {
+        localStorage.setItem("token", data.jwt)
+        this.setState({user: data.user}, () => this.props.history.push(`/welcome`) )
+      },
       )
     }
 
-
-    logMeOut = () => {
-      localStorage.removeItem("token")
-      this.setState({user: null})
-      this.props.history.push("/login")
-    }
+  logMeOut = () => {
+    localStorage.removeItem("token")
+    this.setState({user: null})
+    this.props.history.push("/login")
+  }
 
   render(){
     return (
       <>
-      <Header user={this.state.user} logout={this.logMeOut} />
+      <Header user={this.state.user} logMeOut={this.logMeOut} />
+
       <Switch>
         <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
         <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
         <Route path="/welcome" component={Welcome} />
         <Route path="/restaurants" component={Restaurant} />
-        <Route path="/policy" component={Policy} />
-        <Route path="/profile" render={()=> <Profile/>} />
-        <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} /> }/>
+        <Route path="/profile" render={()=> <Profile user={this.state.user}/>} />
       </Switch>
+
       {/* <Footer/> */}
       </>
     )

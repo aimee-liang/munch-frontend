@@ -3,9 +3,11 @@ import RatingCard from "../Components/RatingCard"
 
 export default class Reviews extends React.Component{
     render(){
+        let renderRatingCard = console.log("hi from the renderRatingCard variable")
+        // let renderRatingCard = this.props.user.reviews.map((review, index) => <RatingCard key={index} review={review} />)
         return(
             <>
-            <RatingCard />
+            {renderRatingCard}
             </>
         )
     }
