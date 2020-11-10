@@ -6,7 +6,6 @@ import Welcome from "./Components/Welcome"
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Restaurants from './Containers/Restaurants';
-import Policy from "./Components/Policy"
 import Header from "./Components/Header"
 // import Footer from "./Components/Footer"
 import Profile from "./Containers/Profile"
@@ -81,7 +80,6 @@ class App extends React.Component{
         <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
         <Route path="/welcome" component={Welcome} />
         <Route path="/restaurants" component={Restaurants} />
-        <Route path="/policy" component={Policy} />
         <Route path="/profile" render={()=> <Profile/>} />
         <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} /> }/>
       </Switch>
