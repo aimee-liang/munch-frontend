@@ -44,9 +44,8 @@ class Welcome extends React.Component{
         return(
             <>
             <Search renderResults = {this.renderResults}/>
-            {this.renderRestaurants()}
+            {this.renderRestaurants()} 
             </>
-
 
     )
 

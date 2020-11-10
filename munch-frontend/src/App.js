@@ -23,11 +23,10 @@ class App extends React.Component{
         method: "GET",
         headers: {Authorization: `Bearer ${token}`},
       })
-        .then(resp=> resp.json())
-        .then(data => this.setState({
-          user: data.user
-        }))
-    }  else {
+        .then(resp => resp.json())
+        .then(data => this.setState({user: data.user}))
+        // .then(data => console.log("Data:", data))
+    } else {
       this.props.history.push("/login")
     }
   }
@@ -41,8 +40,8 @@ class App extends React.Component{
       },
       body: JSON.stringify({user: userObj})
     })
-    .then(resp => resp.json())
-    .then(data => this.setState({user: data.user}),
+      .then(resp => resp.json())
+      .then(data => this.setState({user: data.user}),
     this.props.history.push(`/welcome`)
     )
   }
@@ -59,7 +58,8 @@ class App extends React.Component{
       })
       .then(resp => resp.json())
       .then(data => this.setState({user: data.user}),
-      this.props.history.push(`/welcome`))
+      this.props.history.push(`/welcome`)
+      )
     }
 
 

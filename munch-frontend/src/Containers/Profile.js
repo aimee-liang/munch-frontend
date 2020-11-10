@@ -11,6 +11,7 @@ export default class Profile extends React.Component{
     render(){
         return(
             <>
+            
             <Reservations />
             <Reviews />
             </>
