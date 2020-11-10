@@ -26,9 +26,11 @@ class RestaurantCard extends React.Component{
       zomato_id: restaurant.id
 
     }
+    const token = localStorage.getItem("token")
     fetch('http://localhost:3000/api/v1/restaurants', {
       method: 'POST',
       headers: {
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
         Accept: 'application/json'
       },
@@ -60,9 +62,12 @@ class RestaurantCard extends React.Component{
 
       console.log(reservationData)
 
+      const token = localStorage.getItem("token")
+
       fetch('http://localhost:3000/api/v1/reservations', {
         method: 'POST',
         headers: {
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
           Accept: 'application/json'
         },
