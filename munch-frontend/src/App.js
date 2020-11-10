@@ -79,8 +79,8 @@ class App extends React.Component{
         <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
         <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
         <Route path="/welcome" component={Welcome} />
-        <Route path="/restaurants" component={Restaurants} />
-        <Route path="/profile" render={()=> <Profile user={this.state.user} />} />
+        <Route path="/restaurants" component={()=> <Restaurants user={this.state.user} />} />
+        <Route path="/profile" render={()=> <Profile/>} />
         <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} /> }/>
       </Switch>
 

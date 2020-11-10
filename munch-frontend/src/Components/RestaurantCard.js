@@ -7,7 +7,7 @@ class RestaurantCard extends React.Component{
     date: "2020-11-13",
     time: "19:00",
     guests: "2",
-    user_id: "1"
+    
   }
 
   changeHandler = (e) => {
@@ -26,9 +26,11 @@ class RestaurantCard extends React.Component{
       zomato_id: restaurant.id
 
     }
+    const token = localStorage.getItem("token")
     fetch('http://localhost:3000/api/v1/restaurants', {
       method: 'POST',
       headers: {
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
         Accept: 'application/json'
       },
@@ -52,7 +54,7 @@ class RestaurantCard extends React.Component{
 
       let reservationData = {
         restaurant_id: reservedRest.id,
-        user_id: this.state.user_id,
+        user_id: this.props.user.id,
         guests: this.state.guests,
         datetime: datetime
 
@@ -60,9 +62,12 @@ class RestaurantCard extends React.Component{
 
       console.log(reservationData)
 
+      const token = localStorage.getItem("token")
+
       fetch('http://localhost:3000/api/v1/reservations', {
         method: 'POST',
         headers: {
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
           Accept: 'application/json'
         },

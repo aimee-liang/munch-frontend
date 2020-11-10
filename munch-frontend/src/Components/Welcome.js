@@ -32,7 +32,7 @@ class Welcome extends React.Component{
 
     renderRestaurants = () => this.state.restaurants.map((restaurant) => {
 
-        return <RestaurantCard key={restaurant.restaurant.id} restaurant={restaurant} />
+        return <RestaurantCard key={restaurant.restaurant.id} restaurant={restaurant} user={this.props.user}/>
     })
     
 
