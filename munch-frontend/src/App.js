@@ -41,7 +41,7 @@ class App extends React.Component{
       body: JSON.stringify({user: userObj})
     })
       .then(resp => resp.json())
-      .then(data => this.setState({user: data.user}),
+      .then(data => console.log(data),
     this.props.history.push(`/welcome`)
     )
   }
@@ -77,7 +77,7 @@ class App extends React.Component{
         <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
         <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
         <Route path="/welcome" component={Welcome} />
-        <Route path="/restaurants" component={Restaurants} />
+        <Route path="/restaurants" component={()=> <Restaurants user={this.state.user} />} />
         <Route path="/policy" component={Policy} />
         <Route path="/profile" render={()=> <Profile/>} />
         <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} /> }/>

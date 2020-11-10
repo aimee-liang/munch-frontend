@@ -1,14 +1,19 @@
 import React from "react"
 import Search from "../Components/Search"
 import RestaurantCard from "../Components/RestaurantCard"
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 class Restaurants extends React.Component{
 
     state = {
-        restaurants: []
+        restaurants: [],
+        location: 'lat=40.705138&lon=-74.014096',
+        search: ""
     }
 
-    // fetch all restaurants
+    
+
+    // initial fetch
     componentDidMount(){
         fetch("https://developers.zomato.com/api/v2.1/search?q=&count=20&lat=40.705138&lon=-74.014096&radius=1000&sort=real_distance&order=asc", {
             headers: {
@@ -24,6 +29,25 @@ class Restaurants extends React.Component{
         })
     }
 
+    fetchRestaurants = () => {
+        const restaurantUrl = `https://developers.zomato.com/api/v2.1/search?q=${this.state.search}&count=20&${this.state.location}&radius=1000&sort=real_distance&order=asc`
+
+        fetch("https://developers.zomato.com/api/v2.1/search?q=&count=20&lat=40.705138&lon=-74.014096&radius=1000&sort=real_distance&order=asc", {
+            headers: {
+            Accept: "application/json",
+            "User-Key": "7dc855cf4405df1034f62de35de0744e"
+        }
+        })
+        .then(resp => resp.json())
+        .then(restaurantData => {
+            this.setState(() => ({
+                restaurants: restaurantData.restaurants
+            }))
+        })
+    }
+
+
+
     renderResults = results => {
         this.setState(() => ({
             restaurants: results.restaurants})
@@ -32,7 +56,7 @@ class Restaurants extends React.Component{
 
     renderRestaurants = () => this.state.restaurants.map((restaurant) => {
 
-        return <RestaurantCard key={restaurant.restaurant.id} restaurant={restaurant} />
+        return <RestaurantCard key={restaurant.restaurant.id} restaurant={restaurant} user={this.props.user}/>
     })
     
 
