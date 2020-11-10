@@ -1,6 +1,5 @@
 import React from "react"
 import RestaurantCard from "./RestaurantCard"
-import Header from "./Header"
 import Search from "./Search"
 
 class Welcome extends React.Component{
@@ -44,7 +43,6 @@ class Welcome extends React.Component{
 
         return(
             <>
-            <Header />
             <Search renderResults = {this.renderResults}/>
             {this.renderRestaurants()}
             </>

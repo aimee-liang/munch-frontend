@@ -16,6 +16,9 @@ class Navbar extends React.Component{
             <NavLink to="/profile">
                 <li>View Profile</li>
             </NavLink>
+            <NavLink to="/login">
+                <li onClick={()=> this.props.logout}>Log Out</li>
+            </NavLink>
         </ul>
         :
         <ul>

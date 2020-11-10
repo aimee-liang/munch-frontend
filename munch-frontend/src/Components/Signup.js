@@ -25,9 +25,8 @@ class Signup extends React.Component{
         }))
     }
     
-    validate = () => {
-
-    }
+    // validate = () => {
+    // }
 
 
     render(){

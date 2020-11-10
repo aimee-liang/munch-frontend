@@ -62,10 +62,17 @@ class App extends React.Component{
       this.props.history.push(`/welcome`))
     }
 
+
+    logMeOut = () => {
+      localStorage.removeItem("token")
+      this.props.history.push("/login")
+      this.setState({user: null})
+    }
+
   render(){
     return (
       <>
-      <Header user={this.state.user}/>
+      <Header user={this.state.user} logout={this.logMeOut} />
       <Switch>
         <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
         <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />

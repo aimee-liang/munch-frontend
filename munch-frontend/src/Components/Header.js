@@ -5,7 +5,7 @@ const Header = (props) => {
     return (
     <header className="header">
         <img className="logo" src="images/munch-logo.png" alt="munch logo"/>
-        <Navbar user={props.user}/>
+        <Navbar user={props.user} logout={props.logout} />
     </header>
     )
 }
