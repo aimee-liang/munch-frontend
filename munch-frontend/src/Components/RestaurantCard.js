@@ -6,7 +6,8 @@ class RestaurantCard extends React.Component{
   state = {
     date: "2020-11-13",
     time: "19:00",
-    guests: "2"
+    guests: "2",
+    user_id: "1"
   }
 
   changeHandler = (e) => {
@@ -14,10 +15,71 @@ class RestaurantCard extends React.Component{
   }
 
   submitHandler = (e) => {
-    e.preventDefault()
-
     
+    console.log(this.state.datetime)
+    
+    
+    e.preventDefault()
+    let backendRestId = ""
+    const restaurant = this.props.restaurant.restaurant
+    let restaurantData = {
+      name: restaurant.name,
+      address: restaurant.location.address,
+      zomato_id: restaurant.id
+      
     }
+    fetch('http://localhost:3000/api/v1/restaurants', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(
+        restaurantData
+        )
+      })
+      .then(r => r.json())
+      .then((reservedRest) => { this.makeReservation(reservedRest);
+      })
+      
+      .catch(error => console.error(error))
+      
+      
+      
+      
+    }
+    
+    makeReservation = (reservedRest) => {
+      let datetime = this.state.date + ' ' + this.state.time
+      
+      let reservationData = {
+        restaurant_id: reservedRest.id,
+        user_id: this.state.user_id,
+        guests: this.state.guests,
+        datetime: datetime
+
+      }
+
+      console.log(reservationData)
+
+      fetch('http://localhost:3000/api/v1/reservations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(
+          reservationData
+        )
+      })
+      .then(r => r.json())
+      .then((r) => {
+        console.log(r);
+      })
+      
+      .catch(error => console.error(error))
+  }
+
   
 
 
