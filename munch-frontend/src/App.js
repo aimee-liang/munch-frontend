@@ -65,8 +65,8 @@ class App extends React.Component{
 
     logMeOut = () => {
       localStorage.removeItem("token")
-      this.props.history.push("/login")
       this.setState({user: null})
+      this.props.history.push("/login")
     }
 
   render(){
@@ -80,6 +80,7 @@ class App extends React.Component{
         <Route path="/restaurants" component={Restaurant} />
         <Route path="/policy" component={Policy} />
         <Route path="/profile" render={()=> <Profile/>} />
+        <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} /> }/>
       </Switch>
       {/* <Footer/> */}
       </>
