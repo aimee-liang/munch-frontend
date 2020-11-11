@@ -4,7 +4,7 @@ import React from "react"
 class RestaurantCard extends React.Component{
 
   state = {
-    date: "2020-11-13",
+    date: `${new Date(Date.now()).toISOString().split('T')[0]}`,
     time: "19:00",
     guests: "2",
     confirmed: false,
@@ -121,7 +121,7 @@ class RestaurantCard extends React.Component{
                     <p>{restaurant.location.address}</p>
                     <form className="reservation" onSubmit={this.submitHandler}>
                     <label htmlFor="reservation_date">Reservation Date:</label>
-                    <input type="date" id="reservation-date" name="date" min={today} value={today} onChange={this.changeHandler} />
+                    <input type="date" id="reservation-date" name="date" min={today} value={this.state.date} onChange={this.changeHandler} />
                     <label htmlFor="reservation_time">Reservation Time:</label>
                     <input type="time" id="reservation-time" name="time"  min="12:00" max="22:00" step="900" value={this.state.time} onChange={this.changeHandler}/>
                     <label>
