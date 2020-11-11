@@ -2,7 +2,6 @@
 import './App.css';
 import React from "react"
 import {Route, Switch, withRouter } from 'react-router-dom'
-import Welcome from "./Components/Welcome"
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Restaurants from './Containers/Restaurants';
