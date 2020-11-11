@@ -37,17 +37,21 @@
   }
 }
 
-body {
+/* body {
   background: linear-gradient(#FFFFFF, #76B8F9 )
-}
+} */
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   display: block;
-  height: 40px;
+  height: 45px;
+  padding-top: 10px;
   text-align: center;
   width: 100%;
+  transform: translateX(-50%);
+  z-index: 10;
+  left: 50%;
 }
 
 .welcome-back {
