@@ -137,11 +137,17 @@ input[type="password"], select{
   text-align: center;
 }
 
-.pill {
-  font-family: 'Roboto', sans-serif ;
-  font-size: large;
-  font-weight: 200;
-  color: black;
-  border-radius: 4px;
+.justify-content-end {
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 5px;
+}
 
+.pill {
+  font-family: 'Syne', sans-serif;
+  font-size: large;
+  font-weight: 100;
+  color: black;
+  padding-left: 8px;
+  padding-right: 8px;
 }
