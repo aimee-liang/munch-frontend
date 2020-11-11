@@ -25,13 +25,25 @@ class Login extends React.Component{
         return(
             <>
             <p className="welcome-back">Welcome Back, Munchie!</p>
+            <div className="login">
+
             <Form className="login-form" onSubmit={this.localLoginHandler}>
                 
-                <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler} />
-                <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
+                <input type="text" name="username" placeholder="Enter Username" value={this.state.username} onChange={this.changeHandler} />
+                <br>
+                </br>
+                <br>
+                </br>
+                <input type="password" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.changeHandler} />
+                <br>
+                </br>
+                <br>
+                </br>
                 <Button variant="primary" input type="submit" input="true" value="Log In"> Login </Button>
+            
             </Form>
 
+            </div>
             </>
         )
     }
