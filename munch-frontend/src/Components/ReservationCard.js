@@ -8,7 +8,7 @@ const ReservationCard = (props) => {
     let dateOnly = new Date(isoDate).toDateString()
 
     let isoTime = props.reservation.datetime
-    let timeOnly = new Date (isoTime).toLocaleTimeString()
+    let timeOnly = new Date(isoTime).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
 
 
     return (
