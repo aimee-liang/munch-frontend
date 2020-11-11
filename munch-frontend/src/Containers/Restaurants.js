@@ -33,13 +33,14 @@ class Restaurants extends React.Component{
     }
 
 
-    searchHandler = (search, location) => {
-        e.preventDefault()
-        this.setState(() => ({
+    searchDoer = (search, location) => {
+        console.log(this.state)
+        this.setState({
             search: search,
             location: location
         })
-        )
+        console.log(this.state)
+        
     }
 
     renderRestaurants = () => this.state.restaurants.map((restaurant) => {
@@ -55,7 +56,7 @@ class Restaurants extends React.Component{
 
         return(
             <>
-            <Search searchHandler = {this.searchHandler}/>
+            <Search searchDoer = {this.searchDoer}/>
             {this.renderRestaurants()} 
             </>
 
