@@ -114,10 +114,11 @@ class RestaurantCard extends React.Component{
 
     return(
         <>
+        <div className="default-restaurant-parent">
                 <div className="default-restaurant" key={restaurant.id}>
                     {/* <img src={restaurant.photo_url} alt={restaurant.name}/> */}
-                    <h3><FaUtensils/> {restaurant.name}</h3>
-                    <h4>{restaurant.cuisines}</h4>
+                    <h4><FaUtensils/> {restaurant.name}</h4>
+                    <p>{restaurant.cuisines}</p>
                     <p>{restaurant.location.address}</p>
                     <form className="reservation" onSubmit={this.submitHandler}>
                     <label htmlFor="reservation_date">Reservation Date:</label>
@@ -142,6 +143,7 @@ class RestaurantCard extends React.Component{
                     <br/>
                     <br/>
                 </div>
+        </div>
               </>
             )}
 }

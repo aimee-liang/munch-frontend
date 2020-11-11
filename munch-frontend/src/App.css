@@ -60,6 +60,7 @@ body {
   z-index: 10;
   left: 50%;
   font-family: 'Inter', sans-serif;
+  font-weight: 300;
 }
 
 .welcome-back {
@@ -172,7 +173,17 @@ input[type="password"], select{
   width: 250px;
 }
 
+.default-restaurant-parent {
+  
+}
+
 .default-restaurant {
   padding-left: 20px;
+  border-style: solid;
+  border-color: gray;
+  border-width: thin;
+  border-radius: 30px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
 }
 
