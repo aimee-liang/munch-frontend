@@ -70,7 +70,14 @@ class App extends React.Component{
     this.props.history.push("/login")
   }
 
+  showMeUser = () => {
+    console.log("In App.js, user is:", this.state.user)
+  }
+
   render(){
+
+    this.showMeUser()
+
     return (
       <>
       <Header user={this.state.user} logMeOut={this.logMeOut} />

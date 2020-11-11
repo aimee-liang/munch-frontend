@@ -17,15 +17,15 @@ class Search extends React.Component{
         
         
         this.props.searchDoer(search, location)
-            
-        //setTimeout(() => { this.setState({search: ""}); }, 2000)
-        
+
     }
 
 
     render() {
         return(
             <>
+            <div className="search-parent">
+
             <form className="search" onSubmit={this.searchHandler}>
                 <input type= "text" name="search" placeholder="Search cuisines, specialties, etc." value={this.state.search} onChange={this.changeHandler} />
                 <label>
@@ -39,6 +39,8 @@ class Search extends React.Component{
                 </label>
                 <input type="submit" value="Search" />
             </form>
+
+            </div>
             </>
         )
     }

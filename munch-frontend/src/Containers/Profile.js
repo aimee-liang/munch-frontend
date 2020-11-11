@@ -49,7 +49,7 @@ export default class Profile extends React.Component{
             <>
             <AboutMe user={this.props.user}/>
             <Reservations reservations={this.state.reservations} />
-            <Reviews user={this.state.reviews}/>
+            {/* <Reviews user={this.state.reviews}/> */}
             </>
         )
     }
