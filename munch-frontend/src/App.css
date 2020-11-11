@@ -37,6 +37,10 @@
   }
 }
 
+body {
+  background: linear-gradient(#FFFFFF, #76B8F9 )
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -50,8 +54,4 @@
   text-align: center;
   margin: auto;
   font-size: xx-large;
-}
-
-.login-form {
-
 }

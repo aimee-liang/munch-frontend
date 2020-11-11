@@ -8,6 +8,7 @@ import Restaurants from './Containers/Restaurants';
 import Header from "./Components/Header"
 import Footer from "./Components/Footer"
 import Profile from "./Containers/Profile"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component{
   state={
