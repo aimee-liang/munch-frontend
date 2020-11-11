@@ -5,12 +5,20 @@ import RestaurantCard from "../Components/RestaurantCard"
 class Restaurants extends React.Component{
 
     state = {
-        restaurants: []
+        restaurants: [],
+        location: 'lat=40.705138&lon=-74.014096',
+        search: "",
     }
 
     // fetch all restaurants
     componentDidMount(){
-        fetch("https://developers.zomato.com/api/v2.1/search?q=&count=20&lat=40.705138&lon=-74.014096&radius=1000&sort=real_distance&order=asc", {
+        this.fetchRestaurants()
+    }
+
+    fetchRestaurants = () => {
+        const restaurantUrl = `https://developers.zomato.com/api/v2.1/search?q=${this.state.search}&count=20&${this.state.location}&radius=1000&sort=real_distance&order=asc`
+
+        fetch(restaurantUrl, {
             headers: {
             Accept: "application/json",
             "User-Key": "7dc855cf4405df1034f62de35de0744e"
@@ -24,9 +32,13 @@ class Restaurants extends React.Component{
         })
     }
 
-    renderResults = results => {
+
+    searchHandler = (search, location) => {
+        e.preventDefault()
         this.setState(() => ({
-            restaurants: results.restaurants})
+            search: search,
+            location: location
+        })
         )
     }
 
@@ -43,7 +55,7 @@ class Restaurants extends React.Component{
 
         return(
             <>
-            <Search renderResults = {this.renderResults}/>
+            <Search searchHandler = {this.searchHandler}/>
             {this.renderRestaurants()} 
             </>
 
