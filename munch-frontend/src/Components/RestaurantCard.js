@@ -110,7 +110,7 @@ class RestaurantCard extends React.Component{
 
   render() {
     const restaurant = this.props.restaurant.restaurant
-    const stub = restaurant.name.replace(/[\s.;,?%0-9]/, '')
+    //const stub = restaurant.name.replace(/[\s.;,?%]/, '')
     let today = new Date(Date.now()).toISOString().split('T')[0];
     //let yesterday = new Date(Date.now() - 1 * 86400000).toISOString().split('T')[0]
 
