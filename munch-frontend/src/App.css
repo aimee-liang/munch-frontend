@@ -136,3 +136,12 @@ input[type="password"], select{
 .signup-button {
   text-align: center;
 }
+
+.pill {
+  font-family: 'Roboto', sans-serif ;
+  font-size: large;
+  font-weight: 200;
+  color: black;
+  border-radius: 4px;
+
+}
