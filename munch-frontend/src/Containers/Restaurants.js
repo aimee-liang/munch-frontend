@@ -34,12 +34,12 @@ class Restaurants extends React.Component{
 
 
     searchDoer = (search, location) => {
-        console.log(search, location)
+        // console.log(search, location)
         this.setState({
             search: search,
             location: location
         })
-        console.log(this.state)
+        // console.log(this.state)
         //setTimeout(() => { this.setState({search: ""}); }, 2000)
         this.fetchRestaurants()
         

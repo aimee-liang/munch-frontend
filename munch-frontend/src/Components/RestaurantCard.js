@@ -1,5 +1,5 @@
 import React from "react"
-
+import {FaUtensils} from "react-icons/fa"
 
 class RestaurantCard extends React.Component{
 
@@ -114,9 +114,9 @@ class RestaurantCard extends React.Component{
 
     return(
         <>
-                <div key={restaurant.id}>
+                <div className="default-restaurant" key={restaurant.id}>
                     {/* <img src={restaurant.photo_url} alt={restaurant.name}/> */}
-                    <h2>{restaurant.name}</h2>
+                    <h3><FaUtensils/> {restaurant.name}</h3>
                     <h4>{restaurant.cuisines}</h4>
                     <p>{restaurant.location.address}</p>
                     <form className="reservation" onSubmit={this.submitHandler}>
