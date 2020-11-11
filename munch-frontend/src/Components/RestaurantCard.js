@@ -4,10 +4,11 @@ import React from "react"
 class RestaurantCard extends React.Component{
 
   state = {
-    date: "2020-11-13",
+    date: `${new Date(Date.now()).toISOString().split('T')[0]}`,
     time: "19:00",
     guests: "2",
-    
+    confirmed: false,
+    error: null
   }
 
   changeHandler = (e) => {
@@ -15,7 +16,7 @@ class RestaurantCard extends React.Component{
   }
 
   submitHandler = (e) => {
-    console.log(this.state.datetime)
+    //console.log(this.state.datetime)
 
 
     e.preventDefault()
@@ -60,7 +61,7 @@ class RestaurantCard extends React.Component{
 
       }
 
-      console.log(reservationData)
+      //console.log(reservationData)
 
       const token = localStorage.getItem("token")
 
@@ -75,12 +76,32 @@ class RestaurantCard extends React.Component{
           reservationData
         )
       })
-      .then(r => r.json())
-      .then((r) => {
-        console.log(r);
-      })
+      
+      .then(resp => resp.json())
+      .then((resp) => {
 
-      .catch(error => console.error(error))
+        if (resp.exception) {
+          this.setState({error: resp})
+        } else {
+          
+          this.setState({confirmed: true})
+        }
+        //console.log(resp);
+
+      })
+      
+      //.catch(error => console.error(error))
+    }
+
+  handleErrors = () => {
+      return <p className='error'> {this.state.error.exception.split(": ")[2].slice(0, -1)}</p>
+    
+  }
+
+  reservationConfirm = () => {
+    //let parsedDate = this.state.date
+    const restaurant = this.props.restaurant.restaurant
+    return <p className='confirmation'> Your reservation for {this.state.guests} at {restaurant.name} on {this.state.date} at {this.state.time} is confirmed! </p>
   }
 
 
@@ -88,6 +109,9 @@ class RestaurantCard extends React.Component{
 
   render() {
     const restaurant = this.props.restaurant.restaurant
+    let today = new Date(Date.now()).toISOString().split('T')[0];
+    //let yesterday = new Date(Date.now() - 1 * 86400000).toISOString().split('T')[0]
+
     return(
         <>
                 <div key={restaurant.id}>
@@ -97,7 +121,7 @@ class RestaurantCard extends React.Component{
                     <p>{restaurant.location.address}</p>
                     <form className="reservation" onSubmit={this.submitHandler}>
                     <label htmlFor="reservation_date">Reservation Date:</label>
-                    <input type="date" id="reservation-date" name="date" value={this.state.date} onChange={this.changeHandler} />
+                    <input type="date" id="reservation-date" name="date" min={today} value={this.state.date} onChange={this.changeHandler} />
                     <label htmlFor="reservation_time">Reservation Time:</label>
                     <input type="time" id="reservation-time" name="time"  min="12:00" max="22:00" step="900" value={this.state.time} onChange={this.changeHandler}/>
                     <label>
@@ -112,6 +136,8 @@ class RestaurantCard extends React.Component{
                     </select>
                     </label>
                     <input type="submit" value="Make Reservation" />
+                    { this.state.confirmed ? this.reservationConfirm() : null }
+                    { this.state.error ? this.handleErrors() : null }
                     </form>
                     <br/>
                     <br/>
