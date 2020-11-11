@@ -1,12 +1,13 @@
 import React from "react"
 import Reservations from "./Reservations"
-// import Reviews from "./Reviews"
+import Reviews from "./Reviews"
 import AboutMe from "../Components/AboutMe"
 
 export default class Profile extends React.Component{
 
     state={
-        reservations: []
+        reservations: [],
+        reviews: []
     }
 
     componentDidMount(){
@@ -18,7 +19,6 @@ export default class Profile extends React.Component{
             }
         })
         .then(resp=> resp.json())
-        // .then(data => console.log("Reservations", data))
         .then(reservationsData => this.setState(() => ({
             reservations: reservationsData
         })))
@@ -30,7 +30,7 @@ export default class Profile extends React.Component{
             <>
             <AboutMe user={this.props.user}/>
             <Reservations reservations={this.state.reservations} />
-            {/* <Reviews user={this.props.user}/> */}
+            <Reviews user={this.state.reviews}/>
             </>
         )
     }
