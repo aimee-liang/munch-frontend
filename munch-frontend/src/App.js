@@ -41,7 +41,7 @@ class App extends React.Component{
       .then(resp => resp.json())
       .then(data => {
         localStorage.setItem("token", data.jwt)
-        this.setState({user: data.user}, () => this.props.history.push(`/welcome`) )
+        this.setState({user: data.user}, () => this.props.history.push(`/restaurants`) )
       },
     )
   }
@@ -59,7 +59,7 @@ class App extends React.Component{
       .then(resp => resp.json())
       .then(data => {
         localStorage.setItem("token", data.jwt)
-        this.setState({user: data.user}, () => this.props.history.push(`/welcome`) )
+        this.setState({user: data.user}, () => this.props.history.push(`/restaurants`) )
       },
       )
     }
@@ -78,7 +78,6 @@ class App extends React.Component{
       <Switch>
         <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
         <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
-        <Route path="/welcome" component={Welcome} />
         <Route path="/restaurants" component={()=> <Restaurants user={this.state.user} />} />
         <Route path="/profile" render={()=> <Profile user={this.state.user} />} />
         <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} /> }/>
