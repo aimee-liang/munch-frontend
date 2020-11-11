@@ -22,3 +22,11 @@ header {
 footer {
   background-color: #dd0000;
 }
+
+.confirmation {
+  color: #3caf4c;
+}
+
+.error {
+  color: #9b0000
+}
