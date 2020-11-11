@@ -105,7 +105,12 @@ class RestaurantCard extends React.Component{
     return <p className='confirmation'> Your reservation for {this.state.guests} at {restaurant.name} on {this.state.date} at {this.state.time} is confirmed! </p>
   }
 
+  handleShowPage = () => {
+    const restaurant = this.props.restaurant.restaurant
+    this.props.handleShowPage2(restaurant)
 
+
+  }
 
 
   render() {
@@ -114,19 +119,19 @@ class RestaurantCard extends React.Component{
     let today = new Date(Date.now()).toISOString().split('T')[0];
     //let yesterday = new Date(Date.now() - 1 * 86400000).toISOString().split('T')[0]
 
-
+//render= {()=> <RestaurantPage restaurant={restaurant} user={this.state.user}/>}
 
 
     return(
         <>
           <Switch>
-            <Route path={`/restaurants/${restaurant.id}`} render= {()=> <RestaurantPage restaurant={restaurant} user={this.state.user}/>}/>
+            <Route path={`/restaurants/${restaurant.id}`} />
           </Switch>
       
                 <div key={restaurant.id}>
                     {/* <img src={restaurant.photo_url} alt={restaurant.name}/> */}
                     
-                    <NavLink to={`/restaurants/${restaurant.id}`}>
+                    <NavLink to={`/restaurants/${restaurant.id}`} onClick={this.handleShowPage}>
                       <h2>{restaurant.name}</h2>
                     </NavLink>
                       <h4>{restaurant.cuisines}</h4>

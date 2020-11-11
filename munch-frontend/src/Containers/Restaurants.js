@@ -1,5 +1,6 @@
 import React from "react"
 import Search from "../Components/Search"
+import RestaurantPage from "./RestaurantPage"
 import RestaurantsContainer from "./RestaurantsContainer"
 
 class Restaurants extends React.Component{
@@ -8,6 +9,7 @@ class Restaurants extends React.Component{
         restaurants: [],
         search: "",
         location: 'lat=40.705138&lon=-74.014096',
+        show: null
     }
 
     // fetch all restaurants
@@ -45,12 +47,21 @@ class Restaurants extends React.Component{
         
     }
 
+    handleShowPage3 = (restaurant) => {
+        this.setState({show: restaurant})
+    }
+
     render() {
 
         return(
             <>
             <Search searchDoer = {this.searchDoer}/>
-            <RestaurantsContainer restaurants = {this.state.restaurants} user={this.props.user} /> 
+        {this.state.show ? 
+        <RestaurantPage restaurant={show} user={this.state.user}/> : null
+    }
+
+        
+        <RestaurantsContainer restaurants = {this.state.restaurants} user={this.props.user} show={this.state.show}/> 
             </>
 
     )
