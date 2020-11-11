@@ -1,6 +1,6 @@
 import React from "react"
 import Search from "../Components/Search"
-import RestaurantContainer from "./RestaurantsContainer"
+import RestaurantsContainer from "./RestaurantsContainer"
 
 class Restaurants extends React.Component{
 
@@ -50,7 +50,7 @@ class Restaurants extends React.Component{
         return(
             <>
             <Search searchDoer = {this.searchDoer}/>
-            <RestaurantContainer restaurants = {this.state.restaurants} user={this.props.user} /> 
+            <RestaurantsContainer restaurants = {this.state.restaurants} user={this.props.user} /> 
             </>
 
     )

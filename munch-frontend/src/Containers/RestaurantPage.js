@@ -7,7 +7,7 @@ import React from "react"
 
 
 const RestaurantPage = ({restaurant}) => {
-  console.log(restaurant)
+  console.log('restaurant')
       return restaurant ? (
       <>
       <h1>{restaurant.name}</h1>

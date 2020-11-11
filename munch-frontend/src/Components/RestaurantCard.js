@@ -116,13 +116,13 @@ class RestaurantCard extends React.Component{
 
 
 
-    <Switch>
-      <Route path={`/restaurants/${restaurant.id}`} render= {()=> <RestaurantPage restaurant={restaurant} user={this.state.user}/>}/>
-      
-    </Switch>
 
     return(
         <>
+          <Switch>
+            <Route path={`/restaurants/${restaurant.id}`} render= {()=> <RestaurantPage restaurant={restaurant} user={this.state.user}/>}/>
+          </Switch>
+      
                 <div key={restaurant.id}>
                     {/* <img src={restaurant.photo_url} alt={restaurant.name}/> */}
                     
