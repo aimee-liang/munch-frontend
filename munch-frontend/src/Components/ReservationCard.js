@@ -17,7 +17,6 @@ const ReservationCard = (props) => {
         <div key={reservation.id}>
             <h4>{reservation.restaurant.name}</h4>
             <p>{reservation.restaurant.address}</p>
-            {/* <p>Date: {reservation.datetime}</p> */}
             <p>Date: {dateOnly}</p>
             <p>Time: {timeOnly}</p>
             <p>Party Size: {reservation.guests}</p>
