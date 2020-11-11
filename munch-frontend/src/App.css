@@ -52,16 +52,19 @@
   transform: translateX(-50%);
   z-index: 10;
   left: 50%;
+  font-family: 'Inter', sans-serif;
 }
 
 .welcome-back {
   text-align: center;
   margin: auto;
   font-size: xx-large;
+  padding-top: 80px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .login{
-  padding-top: 10px;
+  padding-top: 20px;
   display: flex;
   text-align: center;
   height: 280px;
