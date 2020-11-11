@@ -1,13 +1,13 @@
 import React from "react"
 import Search from "../Components/Search"
-import RestaurantCard from "../Components/RestaurantCard"
+import RestaurantContainer from "./RestaurantsContainer"
 
 class Restaurants extends React.Component{
 
     state = {
         restaurants: [],
-        location: 'lat=40.705138&lon=-74.014096',
         search: "",
+        location: 'lat=40.705138&lon=-74.014096',
     }
 
     // fetch all restaurants
@@ -34,30 +34,23 @@ class Restaurants extends React.Component{
 
 
     searchDoer = (search, location) => {
-        console.log(this.state)
+        console.log(search, location)
         this.setState({
             search: search,
             location: location
         })
         console.log(this.state)
+        //setTimeout(() => { this.setState({search: ""}); }, 2000)
+        this.fetchRestaurants()
         
     }
 
-    renderRestaurants = () => this.state.restaurants.map((restaurant) => {
-
-        return <RestaurantCard key={restaurant.restaurant.id} restaurant={restaurant} user={this.props.user}/>
-    })
-    
-
-
-
     render() {
-        //console.log(this.state.restaurants)
 
         return(
             <>
             <Search searchDoer = {this.searchDoer}/>
-            {this.renderRestaurants()} 
+            <RestaurantContainer restaurants = {this.state.restaurants} user={this.props.user} /> 
             </>
 
     )

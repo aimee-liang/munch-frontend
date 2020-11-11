@@ -15,10 +15,10 @@ class Search extends React.Component{
         let search = this.state.search
         let location = this.state.location
         
-        console.log(search, location)
+        
         this.props.searchDoer(search, location)
             
-        setTimeout(() => { this.setState({search: ""}); }, 2000)
+        //setTimeout(() => { this.setState({search: ""}); }, 2000)
         
     }
 

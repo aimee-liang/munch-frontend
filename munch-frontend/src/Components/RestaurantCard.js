@@ -115,7 +115,7 @@ class RestaurantCard extends React.Component{
     return(
         <>
                 <div key={restaurant.id}>
-                    <img src={restaurant.photo_url} alt={restaurant.name}/>
+                    {/* <img src={restaurant.photo_url} alt={restaurant.name}/> */}
                     <h2>{restaurant.name}</h2>
                     <h4>{restaurant.cuisines}</h4>
                     <p>{restaurant.location.address}</p>
