@@ -61,12 +61,14 @@
 }
 
 .login{
+  padding-top: 10px;
   display: flex;
   text-align: center;
+  height: 280px;
+  width: 400px;
+  margin: auto;
   border-radius: 25px;
-  background-color: #F1F7EE;
   border-color: black;
-
 }
 
 .login-form {
@@ -78,13 +80,17 @@
 }
 
 input[type="text"], select{
-  width: 120%;
+  width: 130%;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
 input[type="password"], select{
-  width: 120%;
+  width: 130%;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.login-button {
+  text-align: center;
 }

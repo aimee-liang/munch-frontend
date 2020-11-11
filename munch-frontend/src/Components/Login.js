@@ -39,7 +39,7 @@ class Login extends React.Component{
                 </br>
                 <br>
                 </br>
-                <Button variant="primary" input type="submit" input="true" value="Log In"> Login </Button>
+                <Button variant="primary" className="login-button" input type="submit" input="true" value="Log In"> Login </Button>
             
             </Form>
 
