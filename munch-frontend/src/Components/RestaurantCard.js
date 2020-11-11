@@ -110,13 +110,14 @@ class RestaurantCard extends React.Component{
 
   render() {
     const restaurant = this.props.restaurant.restaurant
+    const stub = restaurant.name.replace(/[\s.;,?%0-9]/, '')
     let today = new Date(Date.now()).toISOString().split('T')[0];
     //let yesterday = new Date(Date.now() - 1 * 86400000).toISOString().split('T')[0]
 
 
 
     <Switch>
-      <Route path={`/restaurants/${restaurant.name}`} render= {()=> <RestaurantPage restaurant={restaurant} user={this.state.user}/>}/>
+      <Route path={`/restaurants/${restaurant.id}`} render= {()=> <RestaurantPage restaurant={restaurant} user={this.state.user}/>}/>
       
     </Switch>
 
@@ -125,7 +126,7 @@ class RestaurantCard extends React.Component{
                 <div key={restaurant.id}>
                     {/* <img src={restaurant.photo_url} alt={restaurant.name}/> */}
                     
-                    <NavLink to={`/restaurants/${restaurant.name}`}>
+                    <NavLink to={`/restaurants/${restaurant.id}`}>
                       <h2>{restaurant.name}</h2>
                     </NavLink>
                       <h4>{restaurant.cuisines}</h4>
