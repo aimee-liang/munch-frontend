@@ -97,3 +97,42 @@ input[type="password"], select{
 .login-button {
   text-align: center;
 }
+
+.create-account {
+  text-align: center;
+  
+  margin: auto;
+  font-size: xx-large;
+  padding-top: 80px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.signup {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 500px;
+  margin: auto;
+  border-radius: 25px;
+  border-width: thin;
+  border-color: black;
+  overflow: hidden;
+}
+
+input[type="text"], select{
+  width: 130%;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="password"], select{
+  width: 130%;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup-button {
+  text-align: center;
+}
