@@ -12,19 +12,22 @@ export default class Profile extends React.Component{
 
     componentDidMount(){
         const token = localStorage.getItem("token")
-        fetch('http://localhost:3000/api/v1/reservations',{
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }
-        })
-        .then(resp=> resp.json())
-        .then(reservationsData => this.setState(() => ({
-            reservations: reservationsData
-        })))
-        .catch(error => console.log("Error", error))
+        // Promise.all({
+            // fetch('http://localhost:3000/api/v1/reviews'),
+            fetch('http://localhost:3000/api/v1/reservations',{
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            })
+            .then(resp=> resp.json())
+            .then(reservationsData => this.setState(() => ({
+                reservations: reservationsData
+            })))
+            .catch(error => console.log("Error", error))
+        // })
     }
-
+        
     render(){
         return(
             <>
