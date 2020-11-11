@@ -1,16 +1,24 @@
 import React from "react"
 import Search from "../Components/Search"
-import RestaurantCard from "../Components/RestaurantCard"
+import RestaurantContainer from "./RestaurantsContainer"
 
 class Restaurants extends React.Component{
 
     state = {
-        restaurants: []
+        restaurants: [],
+        search: "",
+        location: 'lat=40.705138&lon=-74.014096',
     }
 
     // fetch all restaurants
     componentDidMount(){
-        fetch("https://developers.zomato.com/api/v2.1/search?q=&count=20&lat=40.705138&lon=-74.014096&radius=1000&sort=real_distance&order=asc", {
+        this.fetchRestaurants()
+    }
+
+    fetchRestaurants = () => {
+        const restaurantUrl = `https://developers.zomato.com/api/v2.1/search?q=${this.state.search}&count=20&${this.state.location}&radius=1000&sort=real_distance&order=asc`
+
+        fetch(restaurantUrl, {
             headers: {
             Accept: "application/json",
             "User-Key": "7dc855cf4405df1034f62de35de0744e"
@@ -24,27 +32,25 @@ class Restaurants extends React.Component{
         })
     }
 
-    renderResults = results => {
-        this.setState(() => ({
-            restaurants: results.restaurants})
-        )
+
+    searchDoer = (search, location) => {
+        console.log(search, location)
+        this.setState({
+            search: search,
+            location: location
+        })
+        console.log(this.state)
+        //setTimeout(() => { this.setState({search: ""}); }, 2000)
+        this.fetchRestaurants()
+        
     }
 
-    renderRestaurants = () => this.state.restaurants.map((restaurant) => {
-
-        return <RestaurantCard key={restaurant.restaurant.id} restaurant={restaurant} user={this.props.user}/>
-    })
-    
-
-
-
     render() {
-        //console.log(this.state.restaurants)
 
         return(
             <>
-            <Search renderResults = {this.renderResults}/>
-            {this.renderRestaurants()} 
+            <Search searchDoer = {this.searchDoer}/>
+            <RestaurantContainer restaurants = {this.state.restaurants} user={this.props.user} /> 
             </>
 
     )

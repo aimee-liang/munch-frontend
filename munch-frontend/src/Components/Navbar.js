@@ -7,6 +7,7 @@ class Navbar extends React.Component{
         <>
         {this.props.user ? 
         <ul>
+                <li>{this.props.user.username}</li>
             <NavLink to="/restaurants">
                 <li>Search Restaurants</li> 
             </NavLink>

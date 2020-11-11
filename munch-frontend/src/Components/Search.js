@@ -12,24 +12,14 @@ class Search extends React.Component{
 
     searchHandler = (e) => {
         e.preventDefault()
-
-        fetch(`https://developers.zomato.com/api/v2.1/search?q=${this.state.search}&count=20&${this.state.location}&radius=1000&sort=real_distance&order=asc`, {
-                headers: {
-                Accept: "application/json",
-                "User-Key": "7dc855cf4405df1034f62de35de0744e"
-            }
-            })
-            .then(resp => resp.json())
-            .then(results => 
-                this.props.renderResults(results)
-            
-            )
-            .catch(error => console.error(error))
-            
+        let search = this.state.search
+        let location = this.state.location
         
-        this.setState({
-            search: ""
-        })
+        
+        this.props.searchDoer(search, location)
+            
+        //setTimeout(() => { this.setState({search: ""}); }, 2000)
+        
     }
 
 
