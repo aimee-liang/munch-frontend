@@ -1,5 +1,6 @@
 import React from "react"
-
+import {Route, Switch, NavLink } from 'react-router-dom'
+import RestaurantPage from '../Containers/RestaurantPage'
 
 class RestaurantCard extends React.Component{
 
@@ -112,33 +113,43 @@ class RestaurantCard extends React.Component{
     let today = new Date(Date.now()).toISOString().split('T')[0];
     //let yesterday = new Date(Date.now() - 1 * 86400000).toISOString().split('T')[0]
 
+
+
+    <Switch>
+      <Route path={`/restaurants/${restaurant.name}`} render= {()=> <RestaurantPage restaurant={restaurant} user={this.state.user}/>}/>
+      
+    </Switch>
+
     return(
         <>
                 <div key={restaurant.id}>
                     {/* <img src={restaurant.photo_url} alt={restaurant.name}/> */}
-                    <h2>{restaurant.name}</h2>
-                    <h4>{restaurant.cuisines}</h4>
-                    <p>{restaurant.location.address}</p>
-                    <form className="reservation" onSubmit={this.submitHandler}>
-                    <label htmlFor="reservation_date">Reservation Date:</label>
-                    <input type="date" id="reservation-date" name="date" min={today} value={this.state.date} onChange={this.changeHandler} />
-                    <label htmlFor="reservation_time">Reservation Time:</label>
-                    <input type="time" id="reservation-time" name="time"  min="12:00" max="22:00" step="900" value={this.state.time} onChange={this.changeHandler}/>
-                    <label>
-                    Guests:
-                    <select name="guests" value={this.state.guests} onChange={this.changeHandler}>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
-                    </label>
-                    <input type="submit" value="Make Reservation" />
-                    { this.state.confirmed ? this.reservationConfirm() : null }
-                    { this.state.error ? this.handleErrors() : null }
-                    </form>
+                    
+                    <NavLink to={`/restaurants/${restaurant.name}`}>
+                      <h2>{restaurant.name}</h2>
+                    </NavLink>
+                      <h4>{restaurant.cuisines}</h4>
+                      <p>{restaurant.location.address}</p>
+                      <form className="reservation" onSubmit={this.submitHandler}>
+                      <label htmlFor="reservation_date">Reservation Date:</label>
+                      <input type="date" id="reservation-date" name="date" min={today} value={this.state.date} onChange={this.changeHandler} />
+                      <label htmlFor="reservation_time">Reservation Time:</label>
+                      <input type="time" id="reservation-time" name="time"  min="12:00" max="22:00" step="900" value={this.state.time} onChange={this.changeHandler}/>
+                      <label>
+                      Guests:
+                      <select name="guests" value={this.state.guests} onChange={this.changeHandler}>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                      </select>
+                      </label>
+                      <input type="submit" value="Make Reservation" />
+                      { this.state.confirmed ? this.reservationConfirm() : null }
+                      { this.state.error ? this.handleErrors() : null }
+                      </form>
                     <br/>
                     <br/>
                 </div>
