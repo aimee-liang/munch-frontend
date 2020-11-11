@@ -1,5 +1,6 @@
 import React from "react"
-import 
+import {Form, Button} from 'react-bootstrap'
+
 class Login extends React.Component{
     state={
         username: "",
@@ -23,12 +24,14 @@ class Login extends React.Component{
     render(){
         return(
             <>
-            <p class="welcome-back">Welcome Back, Munchie!</p>
-            <form class="login-form" onSubmit={this.localLoginHandler}>
+            <p className="welcome-back">Welcome Back, Munchie!</p>
+            <Form className="login-form" onSubmit={this.localLoginHandler}>
+                
                 <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler} />
                 <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
-                <input type="submit" value="Log In" />
-            </form>
+                <Button variant="primary" input type="submit" input="true" value="Log In"> Login </Button>
+            </Form>
+
             </>
         )
     }
