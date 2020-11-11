@@ -6,7 +6,7 @@ import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Restaurants from './Containers/Restaurants';
 import Header from "./Components/Header"
-// import Footer from "./Components/Footer"
+import Footer from "./Components/Footer"
 import Profile from "./Containers/Profile"
 
 class App extends React.Component{
@@ -82,7 +82,7 @@ class App extends React.Component{
         <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} /> }/>
       </Switch>
 
-      {/* <Footer/> */}
+      <Footer/>
       </>
     )
   }
