@@ -3,8 +3,11 @@ import {Form, Button} from "react-bootstrap"
 class Signup extends React.Component{
     state={
         /* avatar: "", // ideally want this to be an option for users to upload an image so it can be more interactive */
+        
         username: "",
         email: "",
+        bio: "",
+        avatar: "",
         password: "",
         confirm_password: "",
     }
@@ -20,6 +23,8 @@ class Signup extends React.Component{
         this.setState(()=>({
             username: "",
             email: "",
+            bio: "",
+            avatar: "",
             password: "",
             confirm_password: ""
         }))
@@ -41,6 +46,16 @@ class Signup extends React.Component{
                 <br>
                 </br>
                 <input type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.changeHandler} />
+                <br>
+                </br>
+                <br>
+                </br>
+                <input type="text" name="bio" placeholder="Bio" value={this.state.bio} onChange={this.changeHandler} />
+                <br>
+                </br>
+                <br>
+                </br>
+                <input type="text" name="avatar" placeholder="URL of avatar" value={this.state.avatar} onChange={this.changeHandler} />
                 <br>
                 </br>
                 <br>

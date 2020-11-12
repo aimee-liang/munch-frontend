@@ -21,3 +21,4 @@ class PastReservations extends React.Component {
 }
 
 export default PastReservations
+

@@ -55,3 +55,4 @@ class ReservationCard extends React.Component {
 }
 
 export default ReservationCard
+

@@ -10,7 +10,7 @@ class Restaurants extends React.Component{
         location: 'lat=40.705138&lon=-74.014096',
     }
 
-    // fetch all restaurants
+
     componentDidMount(){
         this.fetchRestaurants()
     }
@@ -34,13 +34,12 @@ class Restaurants extends React.Component{
 
 
     searchDoer = (search, location) => {
-        // console.log(search, location)
+
         this.setState({
             search: search,
             location: location
         })
-        // console.log(this.state)
-        //setTimeout(() => { this.setState({search: ""}); }, 2000)
+
         this.fetchRestaurants()
         
     }
