@@ -122,9 +122,13 @@ class RestaurantCard extends React.Component{
                     <p>{restaurant.location.address}</p>
                     <form className="reservation" onSubmit={this.submitHandler}>
                     <label htmlFor="reservation_date">Reservation Date:</label>
+                    <span className="resv-date"></span>
                     <input type="date" id="reservation-date" name="date" min={today} value={this.state.date} onChange={this.changeHandler} />
+                    <span className="resv-date"></span>
                     <label htmlFor="reservation_time">Reservation Time:</label>
+                    <span className="resv-date"></span>
                     <input type="time" id="reservation-time" name="time"  min="12:00" max="22:00" step="900" value={this.state.time} onChange={this.changeHandler}/>
+                    <span className="resv-date"></span>
                     <label>
                     Guests:
                     <select name="guests" value={this.state.guests} onChange={this.changeHandler}>
@@ -136,6 +140,7 @@ class RestaurantCard extends React.Component{
                         <option value="6">6</option>
                     </select>
                     </label>
+                    <br></br>
                     <input type="submit" value="Make Reservation" />
                     { this.state.confirmed ? this.reservationConfirm() : null }
                     { this.state.error ? this.handleErrors() : null }
