@@ -1,7 +1,6 @@
 import React from "react"
 
 const ReservationCard = (props) => {
-    /* something to also work on - ability to delete or edit a reservation */
     const reservation = props.reservation
 
     let isoDate = props.reservation.datetime
@@ -16,7 +15,7 @@ const ReservationCard = (props) => {
         <div className="resv-container">
 
             <div className="resv-card" key={reservation.id}>
-                <h4>{reservation.restaurant.name}</h4>
+                <h4 className="resv-rest-name">{reservation.restaurant.name}</h4>
                 <p>{reservation.restaurant.address}</p>
                 <p>Date: {dateOnly}</p>
                 <p>Time: {timeOnly}</p>

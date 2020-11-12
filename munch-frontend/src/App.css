@@ -199,13 +199,21 @@ input[type="password"], select{
   font-weight: 300;
   display: grid;
   flex-direction: row;  
+  text-align: center;
 }
 
 .resv-card {
   flex-direction: row;
-  height: 200px;
-  width: 300px;
-  border-style: dotted;
-  border-color: 
+  height: 175px;
+  width: 270px;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: thin;
+  font-size: 14px;
+}
+
+.resv-rest-name {
+  background-color: #ED7931;
+  border-radius: 10px 10px 0px 0px;
 }
 
