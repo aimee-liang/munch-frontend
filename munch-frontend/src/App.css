@@ -197,8 +197,7 @@ input[type="password"], select{
 .resv-container {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
-  display: grid;
-  flex-direction: row;  
+  display: flex;
   text-align: center;
 }
 
@@ -215,5 +214,9 @@ input[type="password"], select{
 .resv-rest-name {
   background-color: #ED7931;
   border-radius: 10px 10px 0px 0px;
+}
+
+.about-me-container {
+
 }
 
