@@ -52,7 +52,7 @@ class RestaurantCard extends React.Component{
     }
 
     makeReservation = (reservedRest) => {
-      let datetime = this.state.date + ' ' + this.state.time
+      let datetime = this.state.date + ' ' + this.state.time + '-5:00'
 
       let reservationData = {
         restaurant_id: reservedRest.id,

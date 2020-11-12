@@ -12,13 +12,13 @@ class Reservations extends React.Component {
         const sortedReservations = myReservations.sort((a, b) => new Date(a.datetime) - new Date(b.datetime))
         // let remainingReservations = sortedReservations.filter( ( res ) => !this.state.removedReservations.includes( res ) );
         //console.log("remaining:", remainingReservations)
-        return sortedReservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} reRenderReservations={this.reRenderReservations}/> )
+        return sortedReservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} /> )
         
     }
 
-    reRenderReservations = () => {
-        this.props.reRenderReservations()
-    }
+    // reRenderReservations = () => {
+    //     this.props.reRenderReservations()
+    // }
 
 
     
