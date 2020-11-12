@@ -1,6 +1,6 @@
 import React from "react"
 import Reservations from "./Reservations"
-import Reviews from "./Reviews"
+//import Reviews from "./Reviews"
 import AboutMe from "../Components/AboutMe"
 
 export default class Profile extends React.Component{
