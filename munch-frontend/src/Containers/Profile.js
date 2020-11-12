@@ -5,32 +5,10 @@ import AboutMe from "../Components/AboutMe"
 
 export default class Profile extends React.Component{
 
-    state={
-        reservations: [],
-        reviews: []
-    }
 
-    componentDidMount(){
-        this.fetchReservations()
-    }
 
-    fetchReservations = () => {
-        const token = localStorage.getItem("token")
-            fetch('http://localhost:3000/api/v1/reservations',{
-                method: 'GET',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                }
-            })
-            .then(resp=> resp.json())
-            .then(reservationsData => this.setState(() => ({
-                reservations: reservationsData
-            })))
-            .catch(error => console.log("Error", error))}
+    
 
-    reRenderReservations = () => {
-        this.fetchReservations()
-    }
 
     // componentDidMount(){
     //     const token = localStorage.getItem("token")
@@ -55,7 +33,7 @@ export default class Profile extends React.Component{
         return(
             <>
             <AboutMe user={this.props.user}/>
-            <Reservations reservations={this.state.reservations} user={this.props.user} reRenderReservations={this.reRenderReservations}/>
+            <Reservations  user={this.props.user} />
             {/* <Reviews user={this.state.reviews}/> */}
             </>
         )
