@@ -42,7 +42,7 @@ html{
 }
 
 body {
-  background: linear-gradient(#ECF8FE, #A9DEF9 );
+  background: linear-gradient(#fdfdf2, #fffbdf );
   background-repeat: no-repeat;
   min-height: 100%;
   min-width: 100%;
@@ -220,3 +220,6 @@ input[type="password"], select{
 
 }
 
+.delete-icon {
+  float: right;
+}
