@@ -11,6 +11,10 @@ export default class Profile extends React.Component{
     }
 
     componentDidMount(){
+        this.fetchReservations()
+    }
+
+    fetchReservations = () => {
         const token = localStorage.getItem("token")
             fetch('http://localhost:3000/api/v1/reservations',{
                 method: 'GET',
@@ -22,7 +26,10 @@ export default class Profile extends React.Component{
             .then(reservationsData => this.setState(() => ({
                 reservations: reservationsData
             })))
-            .catch(error => console.log("Error", error))
+            .catch(error => console.log("Error", error))}
+
+    reRenderReservations = () => {
+        this.fetchReservations()
     }
 
     // componentDidMount(){
@@ -48,7 +55,7 @@ export default class Profile extends React.Component{
         return(
             <>
             <AboutMe user={this.props.user}/>
-            <Reservations reservations={this.state.reservations} user={this.props.user}/>
+            <Reservations reservations={this.state.reservations} user={this.props.user} reRenderReservations={this.reRenderReservations}/>
             {/* <Reviews user={this.state.reviews}/> */}
             </>
         )

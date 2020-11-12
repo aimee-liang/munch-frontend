@@ -8,7 +8,7 @@ const AboutMe = (props) => {
         <>
             <div className="about-me-container">
 
-            {/* <p>About Me:</p>
+            <h4>About Me:</h4>
             <>{console.log("In About Me, user is:", user)}</>
             <p>Munchie Name: @{user.username}</p> 
             <p>Contact Me: {user.email}</p> 
@@ -16,7 +16,7 @@ const AboutMe = (props) => {
                     "This user did not provide a profile"
                     :
                     user.bio}
-                </p> */}
+                </p>
             </div>
         </>
     

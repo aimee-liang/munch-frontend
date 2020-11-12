@@ -3,23 +3,29 @@ import ReservationCard from "../Components/ReservationCard"
 
 class Reservations extends React.Component {
 
-    state={
-        removedReservations: [],
-        remainingReservations: []
-    }
+    // state={
+    //     removedReservations: [],
+    //     remainingReservations: []
+    // }
     makeReservationCard = () => {
         const myReservations = this.props.reservations.filter(reservation => reservation.user_id === this.props.user.id)
         const sortedReservations = myReservations.sort((a, b) => new Date(a.datetime) - new Date(b.datetime))
-        let remainingReservations = sortedReservations.filter( ( res ) => !this.state.removedReservations.includes( res ) );
+        // let remainingReservations = sortedReservations.filter( ( res ) => !this.state.removedReservations.includes( res ) );
         //console.log("remaining:", remainingReservations)
-        return remainingReservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} deleteReservation={this.deleteReservation}/> )
+        return sortedReservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} reRenderReservations={this.reRenderReservations}/> )
         
     }
+
+    reRenderReservations = () => {
+        this.props.reRenderReservations()
+    }
+
+
     
-    deleteReservation = (deletedReservation) => {
-        this.setState({removedReservations: [...this.state.removedReservations, deletedReservation]})
+    // deleteReservation = (deletedReservation) => {
+    //     this.setState({removedReservations: [...this.state.removedReservations, deletedReservation]})
         
-    }
+    // }
     
     render(){
         //console.log("removed:", this.state.removedReservations)
