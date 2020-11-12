@@ -3,7 +3,8 @@ import ReservationCard from "../Components/ReservationCard"
 
 class Reservations extends React.Component {
     makeReservationCard = () => {
-        return this.props.reservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} /> )
+        const myReservations = this.props.reservations.filter(reservation => reservation.user_id === this.props.user.id)
+        return myReservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} /> )
     }
 
     render(){

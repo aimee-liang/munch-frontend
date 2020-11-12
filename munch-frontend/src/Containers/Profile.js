@@ -48,7 +48,7 @@ export default class Profile extends React.Component{
         return(
             <>
             <AboutMe user={this.props.user}/>
-            <Reservations reservations={this.state.reservations} />
+            <Reservations reservations={this.state.reservations} user={this.props.user}/>
             {/* <Reviews user={this.state.reviews}/> */}
             </>
         )
