@@ -35,6 +35,10 @@ class Search extends React.Component{
                     <option value="lat=40.701085&lon=-73.987546">Flatiron Brooklyn</option>
                     <option value="lat=40.695914&lon=-73.917302">Bushwick</option>
                     <option value="lat=40.727006&lon=-73.982990">East Village</option>
+                    <option value="lat=40.747720&lon=-73.986783">Ktown</option>
+                    <option value="lat=40.761884&lon=-73.831016">Flushing</option>
+                    <option value="lat=40.778534&lon=-73.980008">Upper West Side</option>
+                    <option value="lat=40.740612&lon=-74.007195">Meatpacking District</option>
                 </select>
                 </label>
                 <Button variant="danger" input type="submit" input="true" value="Search">Show Me Food</Button>
