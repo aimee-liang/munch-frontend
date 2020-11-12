@@ -1,4 +1,6 @@
 import React from "react"
+import ReactStars from "react-rating-stars-component";
+
 
 
 class RestaurantCard extends React.Component{
@@ -8,15 +10,76 @@ class RestaurantCard extends React.Component{
     time: "19:00",
     guests: "2",
     confirmed: false,
-    error: null
+    error: null,
+    rating: parseFloat(this.props.restaurant.restaurant.user_rating.aggregate_rating)
   }
+
+
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value})
   }
+  starHandler = (rating) => {
+    this.setState({ rating: rating})
+    const restaurant = this.props.restaurant.restaurant
+    let restaurantData = {
+      name: restaurant.name,
+      address: restaurant.location.address,
+      zomato_id: restaurant.id
+
+    }
+    const token = localStorage.getItem("token")
+    fetch('http://localhost:3000/api/v1/restaurants', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(
+        restaurantData
+        )
+      })
+      .then(r => r.json())
+      .then((reviewedRest) => { this.makeReview(reviewedRest);
+      })
+
+      .catch(error => console.error(error))
+
+
+    }
+    
+    makeReview = (reviewedRest) => {
+      const token = localStorage.getItem("token")
+      
+      let reviewData = {
+        restaurant_id: reviewedRest.id,
+        user_id: this.props.user.id,
+        rating: this.state.rating,
+        description:  this.state.rating.toString()
+        
+      }
+          fetch('http://localhost:3000/api/v1/reviews',{
+              method: 'POST',
+              headers: {
+                  Authorization: `Bearer ${token}`,
+                  'Content-Type': 'application/json',
+                  Accept: 'application/json'
+              },
+              body: JSON.stringify(
+                reviewData
+              )
+          })
+          .then(resp=> resp.json())
+          .then(review => console.log(review)
+          )
+          .catch(error => console.log("Error", error))
+        
+    }
+
+
 
   submitHandler = (e) => {
-    //console.log(this.state.datetime)
 
 
     e.preventDefault()
@@ -111,6 +174,8 @@ class RestaurantCard extends React.Component{
     const restaurant = this.props.restaurant.restaurant
     let today = new Date(Date.now()).toISOString().split('T')[0];
     //let yesterday = new Date(Date.now() - 1 * 86400000).toISOString().split('T')[0]
+    
+    
 
     return(
         <>
@@ -119,6 +184,14 @@ class RestaurantCard extends React.Component{
                     <h2>{restaurant.name}</h2>
                     <h4>{restaurant.cuisines}</h4>
                     <p>{restaurant.location.address}</p>
+                    <ReactStars
+                      
+                      count={5}
+                      value={this.state.rating}
+                      onChange={this.starHandler}
+                      size={24}
+                      activeColor="#ff0000"
+                    />
                     <form className="reservation" onSubmit={this.submitHandler}>
                     <label htmlFor="reservation_date">Reservation Date:</label>
                     <input type="date" id="reservation-date" name="date" min={today} value={this.state.date} onChange={this.changeHandler} />

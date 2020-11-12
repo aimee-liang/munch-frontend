@@ -13,6 +13,20 @@ class Restaurants extends React.Component{
     // fetch all restaurants
     componentDidMount(){
         this.fetchRestaurants()
+        
+            const token = localStorage.getItem("token")
+                    fetch('http://localhost:3000/api/v1/reviews',{
+                        method: 'GET',
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        }
+                    })
+                    .then(resp=> resp.json())
+                    .then(reviews => console.log(reviews)
+                    )
+                    .catch(error => console.log("Error", error))
+            
+          
     }
 
     fetchRestaurants = () => {
