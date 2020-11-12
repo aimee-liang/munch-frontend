@@ -12,6 +12,7 @@ const ReservationCard = (props) => {
 
     return (
         <>
+        
         <div className="resv-container">
 
             <div className="resv-card" key={reservation.id}>

@@ -4,7 +4,9 @@ import ReservationCard from "../Components/ReservationCard"
 class Reservations extends React.Component {
     makeReservationCard = () => {
         const myReservations = this.props.reservations.filter(reservation => reservation.user_id === this.props.user.id)
-        return myReservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} /> )
+        const sortedReservations = myReservations.sort((a, b) => new Date(a.datetime) - new Date(b.datetime))
+        console.log(sortedReservations)
+        return sortedReservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} /> )
     }
 
     render(){
