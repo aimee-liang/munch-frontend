@@ -5,8 +5,7 @@ class PastReservations extends React.Component {
 
     
     makeReservationCard = () => {
-        return this.props.pastReservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} /> )
-        
+      return this.props.pastReservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} /> )
     }
 
 
@@ -14,7 +13,7 @@ class PastReservations extends React.Component {
         
         return(
             <>
-            <h4>Reservations:</h4>
+            <h4>Past Reservations:</h4>
             {this.props.pastReservations ? this.makeReservationCard() : null}
             </>
         )

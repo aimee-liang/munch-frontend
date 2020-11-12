@@ -29,7 +29,7 @@ class ReservationCard extends React.Component {
 
         let isoTime = this.props.reservation.datetime
         let timeOnly = new Date(isoTime).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
-        console.log(reservation)
+        
 
 
 

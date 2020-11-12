@@ -10,12 +10,6 @@ class Reservations extends React.Component {
         upcomingReservations: [],
         pastReservations: []
     }
-    // makeReservationCard = () => {
-    //     const myReservations = this.props.reservations.filter(reservation => reservation.user_id === this.props.user.id)
-    //     const sortedReservations = myReservations.sort((a, b) => new Date(a.datetime) - new Date(b.datetime))
-    //     // let remainingReservations = sortedReservations.filter( ( res ) => !this.state.removedReservations.includes( res ) );
-    //     //console.log("remaining:", remainingReservations)
-    //     return sortedReservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} /> )
         
     componentDidMount(){
         this.fetchReservations()
@@ -61,6 +55,7 @@ class Reservations extends React.Component {
         
 
         render() {
+            console.log(this.state.pastReservations)
         return(
             <>
             <UpcomingReservations upcomingReservations={this.state.upcomingReservations} user={this.props.user}/>
