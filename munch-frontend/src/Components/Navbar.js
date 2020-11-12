@@ -1,7 +1,7 @@
 import React from "react"
 // import { NavLink } from "react-router-dom"
 import {Nav} from "react-bootstrap"
-import {FaSearch, FaPortrait, FaSignOutAlt, FaEllo} from "react-icons/fa"
+import {FaSearch, FaPortrait, FaSignOutAlt, FaEllo, FaUserPlus, FaSignInAlt} from "react-icons/fa"
 
 class Navbar extends React.Component{
     render(){
@@ -33,11 +33,11 @@ class Navbar extends React.Component{
         :
         <>
             <Nav.Item>
-                <Nav.Link className="pill" href="/signup">Create an Account</Nav.Link>
+                <Nav.Link className="pill" href="/signup"><FaUserPlus/> Create an Account</Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-                <Nav.Link className="pill" href="/login">Login</Nav.Link>
+                <Nav.Link className="pill" href="/login"><FaSignInAlt/> Login</Nav.Link>
             </Nav.Item>
         </>
         }
