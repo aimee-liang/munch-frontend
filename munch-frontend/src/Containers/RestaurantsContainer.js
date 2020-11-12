@@ -14,7 +14,7 @@ class RestaurantsContainer extends React.Component{
 
     return(
         <>
-        {this.renderRestaurants()}
+            {this.renderRestaurants()}
         </>
 
 )

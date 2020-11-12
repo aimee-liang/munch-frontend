@@ -13,13 +13,16 @@ const ReservationCard = (props) => {
 
     return (
         <>
-            {/* <p>{console.log(reservation)}</p> */}
-        <div key={reservation.id}>
-            <h4>{reservation.restaurant.name}</h4>
-            <p>{reservation.restaurant.address}</p>
-            <p>Date: {dateOnly}</p>
-            <p>Time: {timeOnly}</p>
-            <p>Party Size: {reservation.guests}</p>
+        <div className="resv-container">
+
+            <div className="resv-card" key={reservation.id}>
+                <h4>{reservation.restaurant.name}</h4>
+                <p>{reservation.restaurant.address}</p>
+                <p>Date: {dateOnly}</p>
+                <p>Time: {timeOnly}</p>
+                <p>Party Size: {reservation.guests}</p>
+            </div>
+
         </div>
         </>
     )

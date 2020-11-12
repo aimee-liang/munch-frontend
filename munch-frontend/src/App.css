@@ -194,3 +194,18 @@ input[type="password"], select{
   margin-left: 8px;
 }
 
+.resv-container {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  display: grid;
+  flex-direction: row;  
+}
+
+.resv-card {
+  flex-direction: row;
+  height: 200px;
+  width: 300px;
+  border-style: dotted;
+  border-color: 
+}
+

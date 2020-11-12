@@ -1,5 +1,6 @@
 import React from "react"
 import {FaUtensils} from "react-icons/fa"
+import {Button} from "react-bootstrap"
 
 class RestaurantCard extends React.Component{
 
@@ -141,7 +142,7 @@ class RestaurantCard extends React.Component{
                     </select>
                     </label>
                     <br></br>
-                    <input type="submit" value="Make Reservation" />
+                    <Button variant="success" input type="submit" input="true" value="Make Reservation">Make Reservation!</Button>
                     { this.state.confirmed ? this.reservationConfirm() : null }
                     { this.state.error ? this.handleErrors() : null }
                     </form>
