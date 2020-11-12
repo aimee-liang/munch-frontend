@@ -142,11 +142,10 @@ class RestaurantCard extends React.Component{
                     </select>
                     </label>
                     <br></br>
-                    <Button variant="success" input type="submit" input="true" value="Make Reservation">Make Reservation!</Button>
+                    <Button variant="success" input type="submit" input="true" value="Make Reservation">Make Reservation</Button>
                     { this.state.confirmed ? this.reservationConfirm() : null }
                     { this.state.error ? this.handleErrors() : null }
                     </form>
-                    <br/>
                     <br/>
                 </div>
         </div>
