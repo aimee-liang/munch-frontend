@@ -1,5 +1,5 @@
 import React from "react"
-
+import {Button} from "react-bootstrap"
 class Search extends React.Component{
     state={
         search: "",
@@ -37,7 +37,7 @@ class Search extends React.Component{
                     <option value="lat=40.727006&lon=-73.982990">East Village</option>
                 </select>
                 </label>
-                <input type="submit" value="Search" />
+                <Button variant="danger" input type="submit" input="true" value="Search">Show Me Food</Button>
             </form>
 
             </div>
