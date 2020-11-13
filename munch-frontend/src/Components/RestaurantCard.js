@@ -62,7 +62,7 @@ class RestaurantCard extends React.Component{
 
       }
 
-      //console.log(reservationData)
+      console.log(reservationData)
 
       const token = localStorage.getItem("token")
 

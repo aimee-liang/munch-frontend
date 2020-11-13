@@ -46,6 +46,7 @@ body {
   background-repeat: no-repeat;
   min-height: 100%;
   min-width: 100%;
+  margin-bottom: 100px;
 }
 
 .footer {
@@ -223,4 +224,10 @@ input[type="password"], select{
 
 .delete-icon {
   float: right;
+}
+
+.content-wrapper {
+  width: 75vw;
+  margin: 0 auto;
+  padding: 50px;
 }
