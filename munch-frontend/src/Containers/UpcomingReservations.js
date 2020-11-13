@@ -14,7 +14,9 @@ class UpcomingReservations extends React.Component {
         return(
             <>
             <h4>Upcoming Reservations:</h4>
-            {this.props.upcomingReservations ? this.makeReservationCard() : null}
+                <div className="reservation-section">
+                {this.props.upcomingReservations ? this.makeReservationCard() : null}
+                </div>
             </>
         )
     }

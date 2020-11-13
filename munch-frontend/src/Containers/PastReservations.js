@@ -14,7 +14,10 @@ class PastReservations extends React.Component {
         return(
             <>
             <h4>Past Reservations:</h4>
-            {this.props.pastReservations ? this.makeReservationCard() : null}
+                <div className="reservation-section">
+                   {this.props.pastReservations ? this.makeReservationCard() : null} 
+                </div>
+            
             </>
         )
     }
