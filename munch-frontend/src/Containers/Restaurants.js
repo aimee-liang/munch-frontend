@@ -1,7 +1,7 @@
 import React from "react"
 import Search from "../Components/Search"
 import RestaurantContainer from "./RestaurantsContainer"
-//import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 class Restaurants extends React.Component{
 
@@ -61,7 +61,7 @@ class Restaurants extends React.Component{
             <>
             
             <Search searchDoer = {this.searchDoer}/>
-            {/* <InfiniteScroll
+            <InfiniteScroll
                 dataLength={this.state.restaurants.length} //This is important field to render the next data
                 next={() => console.log("hit bottom")}
                 hasMore={true}
@@ -71,10 +71,10 @@ class Restaurants extends React.Component{
                 <b>Yay! You have seen it all</b>
                 </p>
                 }
-            > */}
+            >
             {this.state.restaurants ? <RestaurantContainer restaurants = {this.state.restaurants} user={this.props.user} /> : <h4>Loading...</h4> }
             <button onClick={this.fetchMoreDoer}>Load More</button>
-            {/* </InfiniteScroll> */}
+            </InfiniteScroll>
             </>
 
     )
