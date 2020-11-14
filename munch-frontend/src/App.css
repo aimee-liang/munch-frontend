@@ -194,6 +194,7 @@ input[type="password"], select{
 
 .delete-icon {
   float: right;
+  color: rgb(119, 56, 56) ;
 }
 
 .content-wrapper {
