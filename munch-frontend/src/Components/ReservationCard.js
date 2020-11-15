@@ -4,10 +4,13 @@ class ReservationCard extends React.Component {
 
     state = {
         deleted: false,
+        confirmed: false,
         error: null,
         changed: false,
         changing: false,
-        time: this.props.reservation.datetime.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
+        time: new Date(this.props.reservation.datetime).toLocaleTimeString('eng-gb', {hour: '2-digit', minute:'2-digit'}),
+        guests: this.props.reservation.guests
+
         
 
     }
@@ -26,18 +29,22 @@ class ReservationCard extends React.Component {
             .catch(error => console.log("Error", error))
     }
 
-    changeReservation = () => {
+    changeHandler = (e) => {
+        this.setState({ [e.target.name]: e.target.value})
+    }
+    
+
+    submitHandler = (e) => {
+        e.preventDefault()
         const reservation = this.props.reservation
-        let isoDate = reservation.datetime
-        let dateOnly = new Date(isoDate).toDateString()
+        let dateOnly = new Date(reservation.datetime).toDateString()
 
 
         
         let datetime = dateOnly + ' ' + this.state.time + '-5:00'
 
         let reservationData = {
-            restaurant_id: reservedRest.id,
-            user_id: this.props.user.id,
+            
             guests: this.state.guests,
             datetime: datetime
 
@@ -47,7 +54,7 @@ class ReservationCard extends React.Component {
 
         const token = localStorage.getItem("token")
 
-        fetch('http://localhost:3000/api/v1/reservations', {
+        fetch(`http://localhost:3000/api/v1/reservations/${reservation.id}`, {
             method: 'PATCH',
             headers: {
             Authorization: `Bearer ${token}`,
@@ -65,14 +72,23 @@ class ReservationCard extends React.Component {
         if (resp.exception) {
             this.setState({error: resp})
         } else {
-            
-            this.setState({changed: true})
+            let timeOnly = new Date(resp.datetime).toLocaleTimeString('eng-gb', {hour: '2-digit', minute:'2-digit'})
+            this.setState({
+                guests: resp.guests,
+                time: timeOnly,
+                changed: true,
+                changing: false
+            })
         }
           //console.log(resp);
 
         })
         
         //.catch(error => console.error(error))
+    }
+    reservationConfirm = () => {
+    
+        return <p className='confirmation'> Your reservation is confirmed! </p>
     }
 
 
@@ -82,12 +98,17 @@ class ReservationCard extends React.Component {
 
         let isoDate = reservation.datetime
         let dateOnly = new Date(isoDate).toDateString()
+        let isoTime = reservation.datetime
+        let timeOnly = new Date(isoTime).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
 
         
         
             if (this.state.deleted) {
-                <h4>Deleted</h4>
+                
+                return (<h4>Deleted</h4>)
             }else if (this.state.changing) {
+                return(
+                
                 <div className="resv-container">
 
                 <div className="resv-card" key={reservation.id}>
@@ -110,70 +131,44 @@ class ReservationCard extends React.Component {
                     </select>
                     </label>
                     <br></br>
-                    <Button variant="success" input type="submit" input="true" value="Make Reservation">Make Reservation</Button>
-                    { this.state.confirmed ? this.reservationConfirm() : null }
+                    <button input type="submit" input="true" value="submit">Submit Changes</button>
                     { this.state.error ? this.handleErrors() : null }
                     </form>
-                    
-            
-
                 </div>
-
-            </div> 
-            } else {
-
+            </div> )
+            } else { 
+            return(
             <div className="resv-container">
 
                 <div className="resv-card" key={reservation.id}>
                     <h4 className="resv-rest-name">{reservation.restaurant.name}<FaTimesCircle  className="delete-icon" onClick={this.deleteHandler}/></h4>
                     <p>{reservation.restaurant.address}</p>
                     <p>Date: {dateOnly}</p>
-                    <p>Time: {timeOnly}</p>
-                    <p>Party Size: {reservation.guests}</p>
-                    
-            
-
+                    <p>Time: {this.state.time}</p>
+                    <p>Party Size: {this.state.guests}</p>
+                    <button  name="edit" value="edit" onClick={() => this.setState({changing: true})} >Edit Reservation</button>
+                    { this.state.changed ? this.reservationConfirm() : null }
                 </div>
 
-            </div>}
-
-
+            </div>)}
     }
+    
+
+
+    
 
     
 
     render(){
-        const reservation = this.props.reservation
-
-        let isoDate = this.props.reservation.datetime
-        let dateOnly = new Date(isoDate).toDateString()
-
-        let isoTime = this.props.reservation.datetime
-        let timeOnly = new Date(isoTime).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
         
-
-
 
         return (
             <>
             
-            {this.state.deleted ? <h4>Deleted</h4> : <div className="resv-container">
-
-            <div className="resv-card" key={reservation.id}>
-                    <h4 className="resv-rest-name">{reservation.restaurant.name}<FaTimesCircle  className="delete-icon" onClick={this.deleteHandler}/></h4>
-                    <p>{reservation.restaurant.address}</p>
-                    <p>Date: {dateOnly}</p>
-                    <p>Time: {timeOnly}</p>
-                    <p>Party Size: {reservation.guests}</p>
-                    
-            
-
-                </div>
-
-            </div>}
+            {this.renderReservation()}
             </>
     )}
-}
 
+}
 export default ReservationCard
 
