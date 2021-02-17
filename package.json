@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@types/react-dom": "^16.9.9",
+    "@types/throttle-debounce": "^2.1.0",
+    "react-router-dom": "^5.2.0"
+  }
+}

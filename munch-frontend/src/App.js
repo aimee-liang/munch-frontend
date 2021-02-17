@@ -81,7 +81,7 @@ class App extends React.Component{
     return (
       <>
       <Header user={this.state.user} logMeOut={this.logMeOut} />
-
+      <div className="content-wrapper">
       <Switch>
         <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
         <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
@@ -89,6 +89,7 @@ class App extends React.Component{
         <Route path="/profile" render={()=> <Profile user={this.state.user} />} />
         <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} /> }/>
       </Switch>
+      </div>
 
       <Footer/>
       </>

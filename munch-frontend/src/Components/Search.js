@@ -31,8 +31,8 @@ class Search extends React.Component{
                 <label>
                     Neighborhood:
                     <select name="location" value={this.state.location} onChange={this.changeHandler}>
-                    <option value="lat=40.705138&lon=-74.014096">Flatiron NYC</option>
-                    <option value="lat=40.701085&lon=-73.987546">Flatiron Brooklyn</option>
+                    <option value="lat=40.705138&lon=-74.014096">Flatiron School NYC</option>
+                    <option value="lat=40.701085&lon=-73.987546">Flatiron School Brooklyn</option>
                     <option value="lat=40.695914&lon=-73.917302">Bushwick</option>
                     <option value="lat=40.727006&lon=-73.982990">East Village</option>
                     <option value="lat=40.747720&lon=-73.986783">Ktown</option>

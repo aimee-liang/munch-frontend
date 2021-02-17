@@ -5,7 +5,7 @@ class UpcomingReservations extends React.Component {
       
     
     makeReservationCard = () => {
-      return this.props.upcomingReservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} /> )
+      return this.props.upcomingReservations.map(reservation => <ReservationCard key={reservation.id} reservation={reservation} user={this.props.user}/> )
     }
 
     
@@ -14,7 +14,9 @@ class UpcomingReservations extends React.Component {
         return(
             <>
             <h4>Upcoming Reservations:</h4>
-            {this.props.upcomingReservations ? this.makeReservationCard() : null}
+                <div className="reservation-section">
+                {this.props.upcomingReservations ? this.makeReservationCard() : null}
+                </div>
             </>
         )
     }

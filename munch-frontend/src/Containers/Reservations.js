@@ -1,7 +1,7 @@
 
 import React from "react"
 import UpcomingReservations from "./UpcomingReservations"
-import PastReservations from "./UpcomingReservations"
+import PastReservations from "./PastReservations"
 
 class Reservations extends React.Component {
 
@@ -34,7 +34,7 @@ class Reservations extends React.Component {
         const myReservations = reservations.filter(reservation => reservation.user_id === this.props.user.id)
         const sortedReservations = myReservations.sort((a, b) => new Date(a.datetime) - new Date(b.datetime))
             sortedReservations.forEach(reservation => {
-                if (new Date(reservation.datetime) > new Date()) {
+                if (new Date(reservation.datetime) >= new Date()) {
                     upcomingReservations.push(reservation)
                 }else{ pastReservations.push(reservation)
                 }
